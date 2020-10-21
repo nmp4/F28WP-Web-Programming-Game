@@ -3,10 +3,15 @@
 ## Contributors
 
 [Natasha Pregetter] (https://github.com/nmp4)
+
 [Kayla Pineda] (https://github.com/kaylaqn)
+
 [Ethan McDade] (https://github.com/ethan1208)
+
 [Suleyman Moustafa] (https://github.com/SuleymanMoustafa)
+
 [Joseph Parkinson] (https://github.com/JosephP98)
+
 
 ## Game Premise
 
