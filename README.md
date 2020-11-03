@@ -15,6 +15,6 @@
 
 ## Game Premise
 
-This game is based on football, except that now there are 8 total players fighting each other in deathmatches. Where the main goal is to score as many points in anyone elses goal.
+This game is based on football, except there are 8 total players fighting each other in deathmatches. Where the main goal is to score as many points in anyone elses goal.
 
 ##
