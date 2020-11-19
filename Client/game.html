@@ -4,27 +4,34 @@
     
 
     <style>
-        .background {
+        #background {
             position: absolute;
             top: 10px;
             left: 10px;
             z-index: 1;
         }
 
-
-        #startButton {
-            height: 500px;
-            width: 500px;
+        #playerName {
             position: absolute;
-            top: 340px;
-            left: 500px;
+            top: 475px;
+            left: 875px;
+            z-index: 2;
+        }
+        
+        #startButton {
+            height: 0px;
+            width: 0px;
+            position: absolute;
+            top: 500px;
+            left: 685px;
             z-index: 2;
         }
     </style>
     <title>Ball Mania</title>
 </head>
 <body>
-    <img src="Img\MainMenu\Menu Page1.png" class="background">
+    <input type="text" id="playerName" value="">
+    <img src="Img\MainMenu\Menu Page1.png" id="background">
     <button id="startButton">
         <img src="Img\MainMenu\button(play).png">
     </button>
