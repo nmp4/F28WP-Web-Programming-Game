@@ -1,4 +1,4 @@
-var playButton = document.getElementById("startButton");
+var slayButton = document.getElementById("startButton");
 
 //document.getElementById("gameWindow").style.opacity = 0;
 
