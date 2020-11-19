@@ -1,5 +1,5 @@
-const $startButton = document.getElementById("startButton")
+const $startButton = document.getElementById("startButton") //create variable that stores the button
 
-$startButton.onclick = () => {
-    $startButton.style.display = "none"
+$startButton.onclick = () => { // if startbutton is clicked
+    $startButton.style.display = "none" //remove startButton
 }
