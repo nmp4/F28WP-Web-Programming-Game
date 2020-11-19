@@ -1,10 +1,5 @@
-const $startButton = document.getElementById('startButton')
-const $background = document.getElementById('background')
-const $playerName = document.getElementById('playerName')
-
+const $startButton = document.getElementById("startButton")
 
 $startButton.onclick = () => {
-    $startButton.style.display = 'none'
-    $playerName.style.display = 'none'
-    $background.src = "Img/LoadingScreens/Wallpaper.jpg" 
-    }
+    $startButton.style.display = "none"
+}
