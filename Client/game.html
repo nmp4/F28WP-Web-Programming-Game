@@ -11,11 +11,13 @@
             z-index: 1;
         }
 
-        #playerName {
+        #playerNameInput {
             position: absolute;
-            top: 475px;
-            left: 875px;
+            top: 450px;
+            left: 795px;
             z-index: 2;
+            height:75px;
+            width:300px;
         }
         
         #startButton {
@@ -26,15 +28,35 @@
             left: 685px;
             z-index: 2;
         }
+
+        #playerNameButton {
+            height: 0px;
+            width: 0px;
+            position: absolute;
+            top: 240px;
+            left: 1100px;
+            z-index: 2;
+        }
+
+
     </style>
     <title>Ball Mania</title>
 </head>
 <body>
-    <input type="text" id="playerName" value="">
+    <input type="text" id="playerNameInput" value="">
     <img src="Img\MainMenu\Menu Page1.png" id="background">
     <button id="startButton">
         <img src="Img\MainMenu\button(play).png">
     </button>
+    <button id="playerNameButton">
+        <img src="Img\MainMenu\buttonenter.png">
+    </button>
+    <object data="Img\Sprites\Spirtes\Blue Man\walk-to-the-left.png" id="blueSprite"></object>
+    <object data="Img\Sprites\Spirtes\Black Man\walk-to-the-left.png" id="blackSprite"></object>
+    <object data="Img\Sprites\Spirtes\Green Man\walk-to-the-left.png" id="greenSprite"></object>
+    <object data="Img\Sprites\Spirtes\Pink Man\walk-to-the-left.png" id="pinkSprite"></object>
+    <object data="Img\Sprites\Spirtes\Red Man\walk-to-the-left.png" id="redSprite"></object>
+    <object data="Img\Sprites\Spirtes\White Man\walk-to-the-left.png" id="whiteSprite"></object>
     <script src="js\placeholder.js"></script>
 </body>
 <script src="js\placeholder.js"></script>
