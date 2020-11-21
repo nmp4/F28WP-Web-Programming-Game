@@ -2,6 +2,7 @@ const $startButton = document.getElementById("startButton")
 const $background = document.getElementById('background')
 const $playerNameInput = document.getElementById('playerNameInput')
 const $playerNameButton = document.createElement('playerNameButton')
+let moveBy = 10;
 
 
 $startButton.onclick = () => {
