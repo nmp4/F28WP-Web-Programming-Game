@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Client",
+    "\\Client\\Img",
+    "\\Client\\Img\\Backgrounds",
+    "\\Client\\Img\\LoadingScreens",
+    "\\Client\\Img\\MainMenu",
+    "\\Client\\Img\\Sprites",
+    "\\Client\\Img\\Sprites\\Spirtes",
+    "\\Client\\Img\\Sprites\\Spirtes\\White Man",
+    "\\Client\\js"
+  ],
+  "SelectedNode": "\\Client\\Img\\Sprites\\Spirtes\\White Man\\walk-to-the-left.png",
+  "PreviewInSolutionExplorer": false
+}
