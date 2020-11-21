@@ -54,46 +54,103 @@ window.addEventListener('load', () => {
 });
 
 
-window.addEventListener('keydown', (e) => {
-    switch (e.key) { //Movement fuction detects when arrow keys are
-        case 'ArrowLeft':
+window.addEventListener('keydown', (e) => {switch (e.key) { //Movement fuction detects when arrow keys down
+    case 'ArrowLeft':
+        if($playerSprite.style.left === 2080 + 'px'){ //RIGHT BORDER
+
             $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-            if ($playerSprite.style.left === 300 + "px") {
-                moveBy = 0;
-            }
-            break;
-        case 'ArrowRight':
-            moveBy = 20;
-            $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-            break;
-        case 'ArrowUp':
-            moveBy = 20;
-            $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-            break;
-        case 'ArrowDown':
-            moveBy = 20;
-            $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
-            break;
-        case 'ArrowDown' && 'ArrowRight':
-            moveBy = 20;
-            $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
-            $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-            break;
-        case 'ArrowDown' && 'ArrowLeft':
-            moveBy = 20;
-            $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+
+        }else if($playerSprite.style.top === 60 + 'px'){ // TOP BORDER
+
             $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-            break;
-        case 'ArrowUp' && 'ArrowRight':
-            moveBy = 20;
-            $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-            $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-            break;
-        case 'ArrowUp' && 'ArrowLeft':
+
+        }else if($playerSprite.style.top === 1000 + 'px'){ // BOTTOM BORDER
+
+            $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+
+        }else if($playerSprite.style.left === 380 + 'px'){ // LEFT BORDER
+
+            moveBy = 0;
+
+        }else{ //DEFAULT MOVEMENT
+
+            $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+
+        }
+        break;
+
+    case 'ArrowRight':
+        moveBy = 20;
+        if ($playerSprite.style.left === 380 + 'px') { // LEFT BORDER
+
+         $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+
+        } else if ($playerSprite.style.top === 1000 + 'px') { // BOTTOM BORDER
+
+         $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px' 
+
+        } else if ($playerSprite.style.top === 60 + 'px') { //TOP BORDER
+
+         $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+
+        } else if ($playerSprite.style.left === 2080 + 'px') { //RIGHT BORDER
+
+            moveBy = 0;
+
+        }else{ //DEFAULT MOVEMENT
+            
+            $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px';  
+        }        
+         break;
+
+    case 'ArrowUp':
+        if ($playerSprite.style.left === 380 + 'px'){ // LEFT BORDER
 
             $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-            $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-            break;
+
+        } else if($playerSprite.style.top === 1000 + 'px'){ // BOTTOM BORDER
+
+            $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+
+        }else if($playerSprite.style.left === 2080 + 'px'){ // RIGHT BORDER
+
+            $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+
+        }else if($playerSprite.style.top === 60 + 'px'){ // TOP BORDER
+
+            moveBy = 0;
+
+        }else{ //DEFAULT MOVEMENT
+
+            $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+        }
+        break;
+
+    case 'ArrowDown':
+
+        if ($playerSprite.style.left === 380 + 'px'){ //LEFT BORDER
+
+            $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+
+        }else if($playerSprite.style.top === 60 + 'px'){ // TOP BORDER
+
+            $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+
+        }else if($playerSprite.style.left === 2080 + 'px'){ // RIGHT BORDER
+
+            $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+
+        }else if($playerSprite.style.top === 1000 + 'px'){ // BOTTOM BORDER
+
+            moveBy = 0;
+
+        }else{ // DEFAULT MOVEMENT
+
+            $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+        
+        }
+
+        break;
 
 
 
