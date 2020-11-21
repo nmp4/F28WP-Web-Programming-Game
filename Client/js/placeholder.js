@@ -3,8 +3,11 @@ const $background = document.getElementById('background')
 const $playerNameInput = document.getElementById('playerNameInput')
 const $playerNameButton = document.getElementById('playerNameButton')
 var $playerSprite = document.querySelector('#playerSprite')
+var $goodBall = document.querySelector('#goodBall')
+let moveBy = 20;
 
-$playerSprite.style.display = 'none'
+$playerSprite.style.display = 'none';
+$goodBall.style.display = 'none';
 
 
 $startButton.onclick = () => {
@@ -12,9 +15,9 @@ $startButton.onclick = () => {
     $playerNameInput.style.display = 'none';
     $playerNameButton.style.display = 'none';
     $playerSprite.style.display = 'inline-block';
-    $background.src = "Img/Backgrounds/temp new background .png";
-    
-    
+    $goodBall.style.display == 'inline-block';
+    $background.src = "Img/LoadingScreens/Wallpaper.jpg";
+    $background.style.left = '500px';
 }
 
 $playerNameButton.onclick = () => {
@@ -24,38 +27,21 @@ $playerNameButton.onclick = () => {
     return $playerName;
 };
 
-//var Player = function (x,y,size,speed){
-    //this.x = x;
-    //this.y = y;
-    //this.size = size;
-    //this.speed = speed;
-    //this.update = function(){`
-    //   ellipse(this.x,this.y,this.size,this.speed);
-  //  }
-//}
 
-//var player = new player(960,540,9,3);
-
-//draw = function(){
-  //  player.update();
-//}
-
-
-
-
-
-
-let moveBy = 20;
-
-window.addEventListener('load', () => {
+window.addEventListener('Load', () => {
     $playerSprite.style.position = 'absolute';
-    $playerSprite.style.left = 960 + "px";
-    $playerSprite.style.top = 500 + "px";
-});
+    $playerSprite.style.left = 960 + 'px';
+    $playerSprite.style.top = 540 + 'px';
+    $goodBall.style.position = 'absolute';
+    $goodBall.style.left = getRandomX + 'px';
+    $goodBall.style.top = getRandomY + 'px';
 
+
+});
 
 window.addEventListener('keydown', (e) => {switch (e.key) { //Movement fuction detects when arrow keys down
     case 'ArrowLeft':
+        moveBy = 20;
         if($playerSprite.style.left === 2080 + 'px'){ //RIGHT BORDER
 
             $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
@@ -104,6 +90,7 @@ window.addEventListener('keydown', (e) => {switch (e.key) { //Movement fuction d
          break;
 
     case 'ArrowUp':
+        moveBy = 20;
         if ($playerSprite.style.left === 380 + 'px'){ // LEFT BORDER
 
             $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
@@ -127,6 +114,7 @@ window.addEventListener('keydown', (e) => {switch (e.key) { //Movement fuction d
         break;
 
     case 'ArrowDown':
+        moveBy = 20;
 
         if ($playerSprite.style.left === 380 + 'px'){ //LEFT BORDER
 
@@ -152,7 +140,21 @@ window.addEventListener('keydown', (e) => {switch (e.key) { //Movement fuction d
 
         break;
 
+    function getRandomInt(int)
+    {
+        return Math.floor(Math.random() * Math.floor(int));
+    }
+
+    function getRandomX(){
+
+       return getRandomInt(1701) + 400
+    }
+
+    function getRandomY(){
+
+        return getRandomInt(941) + 100
+    }
 
 
-   }
-})
+
+}})
