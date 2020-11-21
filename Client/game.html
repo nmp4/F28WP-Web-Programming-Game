@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+
 
     <style>
-        :root {
-            --pixel-size: 2px;
-            --grid-cell: calc( var(--pixel-size) * 16);
-            --bg: #9fa7e4;
-        }
+
         #background {
             position: absolute;
             top: 10px;
             left: 10px;
             z-index: 1;
-        }
-        .map {
-            image-rendering: pixelated;
-            background-size: 100%;
-            width: calc(13 * var(--grid-cell));
-            height: calc(10 * var(--grid-cell));
-            position: relative;
         }
 
         #playerNameInput {
@@ -28,10 +17,10 @@
             top: 450px;
             left: 795px;
             z-index: 2;
-            height:75px;
-            width:300px;
+            height: 75px;
+            width: 300px;
         }
-        
+
         #startButton {
             height: 0px;
             width: 0px;
@@ -49,35 +38,20 @@
             left: 1100px;
             z-index: 2;
         }
-        .circle {
-            height: 100px;
-            width: 100px;
-            border-radius: 50%;
-            background-color: green;
-        }
+
+       
+
         #playerSprite {
             position: absolute;
             top: 240px;
             left: 1100px;
             z-index: 2;
         }
-        .camera {
-            width: calc(var(--pixel-size) * 160);
-            height: calc(var(--pixel-size) * 144);
-            overflow: hidden;
-            background: #61ddf7;
-            position: relative;
-        }
+
     </style>
     <title>Ball Mania</title>
 </head>
 <body>
-    <div class="camera">
-        <div class="playingField">
-            <div class="player" facing="down" walking="true">
-            </div>
-        </div>
-    </div>
     <div class="circle"></div>
     <input type="text" id="playerNameInput" value="">
     <img src="Img\MainMenu\Menu Page1.png" id="background">
