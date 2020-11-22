@@ -1,15 +1,19 @@
-const $startButton = document.getElementById("startButton")
-const $background = document.getElementById('background')
-const $playerNameInput = document.getElementById('playerNameInput')
-const $playerNameButton = document.getElementById('playerNameButton')
-var $playerSprite = document.querySelector('#playerSprite')
-var $goodBall = document.querySelector('#goodBall')
+const $startButton = document.getElementById("startButton"); // get startbutton from DOM
+const $background = document.getElementById('background'); // get background from DOM
+const $playerNameInput = document.getElementById('playerNameInput'); // get 
+const $playerNameButton = document.getElementById('playerNameButton');
+const $playerSprite = document.getElementById('playerSprite');
+const $goodBall = document.querySelector('#goodBall');
+const $playerName = document.getElementById('playerNameInput').value;
 let counter = 0;
-var goodBalls = [50];
+var ball = []
+let moveBy = 20;
+
 
 
 $playerSprite.style.display = 'none'
 $goodBall.style.display = 'none'
+
 
 $startButton.onclick = () => {
     $startButton.style.display = 'none';
@@ -17,6 +21,7 @@ $startButton.onclick = () => {
     $playerNameButton.style.display = 'none';
     $playerSprite.style.display = 'inline-block';
     $goodBall.style.display = 'inline-block';
+    
     $background.src = "Img/Backgrounds/new background 1920x1080 v1.png";
 
 }
@@ -29,56 +34,53 @@ $playerNameButton.onclick = () => {
 };
 
 
-let moveBy = 20;
-//below me is iffy
-
-function giveXY(ball) {
-    for (i = 0; i <= goodBallArray.length; i++) {
-        ball.style.left = getRandomX + 'px';
-        ball.style.top = getRandomY + 'px';
-    }
-
-};
-function fillArray (ball) {
-    var arr = [];
-    for (var i = 0; i < 50; i++) {
-        arr.push(ball);
-    }
-    return arr;
+function Ball(){
+    this.x = getRandomInt(1701) + 400;
+    this.y = getRandomInt(941) + 100;
+    $goodBall.style.position = 'absolute'
+    $goodBall.style.left = this.x + 'px';
+    $goodBall.style.top = this.y + 'px';
+    console.log(this.x + ',' + this.y)
 }
+
+
+
+
+
+
 window.addEventListener('load', () => {
     $playerSprite.style.position = 'absolute';
     $playerSprite.style.left = 960 + "px";
     $playerSprite.style.top = 500 + "px";
-    giveXY(fillArray($goodBall));
+    var ball1 = new Ball();
+    
+      
+    
+    
+
+    
+    
 })
 
 
-//above me is iffy
+
+
+
 
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) { //Movement fuction detects when arrow keys down
         case 'ArrowLeft':
             moveBy = 20;
-            if ($playerSprite.style.left === 2080 + 'px') { //RIGHT BORDER
-
+            if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
                 $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 60 + 'px') { // TOP BORDER
-
+            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
                 $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 1000 + 'px') { // BOTTOM BORDER
-
+            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
                 $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-
-            } else if ($playerSprite.style.left === 380 + 'px') { // LEFT BORDER
-
+            } else if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
                 moveBy = 0;
-
-            } else { //DEFAULT MOVEMENT
-
+            } else { //At no borders
                 $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
 
             }
@@ -86,84 +88,51 @@ window.addEventListener('keydown', (e) => {
 
         case 'ArrowRight':
             moveBy = 20;
-            if ($playerSprite.style.left === 380 + 'px') { // LEFT BORDER
-
+            if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
                 $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 1000 + 'px') { // BOTTOM BORDER
-
+            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
                 $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 60 + 'px') { //TOP BORDER
-
+            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
                 $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-
-            } else if ($playerSprite.style.left === 2080 + 'px') { //RIGHT BORDER
-
+            } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
                 moveBy = 0;
-
-            } else { //DEFAULT MOVEMENT
-
+            } else { //At no borders
                 $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px';
             }
             break;
 
         case 'ArrowUp':
             moveBy = 20;
-            if ($playerSprite.style.left === 380 + 'px') { // LEFT BORDER
-
+            if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
                 $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 1000 + 'px') { // BOTTOM BORDER
-
+            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
                 $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-
-            } else if ($playerSprite.style.left === 2080 + 'px') { // RIGHT BORDER
-
+            } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
                 $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 60 + 'px') { // TOP BORDER
-
+            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
                 moveBy = 0;
-
-            } else { //DEFAULT MOVEMENT
-
+            } else { //At no borders
                 $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
             }
             break;
 
         case 'ArrowDown':
             moveBy = 20;
-            if ($playerSprite.style.left === 380 + 'px') { //LEFT BORDER
-
+            if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
                 $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 60 + 'px') { // TOP BORDER
-
+            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
                 $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
-
-            } else if ($playerSprite.style.left === 2080 + 'px') { // RIGHT BORDER
-
+            } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
                 $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
-
-            } else if ($playerSprite.style.top === 1000 + 'px') { // BOTTOM BORDER
-
+            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
                 moveBy = 0;
-
-            } else { // DEFAULT MOVEMENT
-
+            }else { //At no borders
                 $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
 
             }
 
             break;
-
-
-
     }
-
-
-
 }
 )
 
@@ -178,3 +147,12 @@ function getRandomX(){
 function getRandomY() {
     return getRandomInt(941) + 100;
 }
+
+//function isCollideBall (a, b){
+    //return !(
+        //((a.style.top + a.style.height) < (b.style.top)) ||
+        //(a.style.top > (b.style.top + b.style.height)) ||
+        //((a.style.left + a.style.width) < b.style.left) ||
+        //(a.style.left > (b.style.left + b.style.width))
+    //);
+//}
