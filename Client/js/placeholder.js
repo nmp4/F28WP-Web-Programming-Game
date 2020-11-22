@@ -11,22 +11,39 @@ const $goodBall5 = document.querySelector('#goodBall5');
 const $goodBall6 = document.querySelector('#goodBall6');
 const $goodBall7 = document.querySelector('#goodBall7');
 const $goodBall8 = document.querySelector('#goodBall8');
+const $bomb = document.querySelector('#bomb')
+const $bomb2 = document.querySelector('#bomb2')
+const $bomb3 = document.querySelector('#bomb3')
+const $bomb4 = document.querySelector('#bomb4')
+const $bomb5 = document.querySelector('#bomb5')
+const $bomb6 = document.querySelector('#bomb6')
+const $bomb7 = document.querySelector('#bomb7')
+const $bomb8 = document.querySelector('#bomb8')
 const $playerName = document.getElementById('playerNameInput').value;
 let counter = 0;
 var ball = []
 let moveBy = 20;
+var intVar;
 
 
 
-$playerSprite.style.display = 'none'
-$goodBall.style.display = 'none'
-$goodBall2.style.display = 'none'
-$goodBall3.style.display = 'none'
-$goodBall4.style.display = 'none'
-$goodBall5.style.display = 'none'
-$goodBall6.style.display = 'none'
-$goodBall7.style.display = 'none'
-$goodBall8.style.display = 'none'
+$playerSprite.style.display = 'none';
+$goodBall.style.display = 'none';
+$goodBall2.style.display = 'none';
+$goodBall3.style.display = 'none';
+$goodBall4.style.display = 'none';
+$goodBall5.style.display = 'none';
+$goodBall6.style.display = 'none';
+$goodBall7.style.display = 'none';
+$goodBall8.style.display = 'none';
+$bomb.style.display = 'none';
+$bomb2.style.display = 'none';
+$bomb3.style.display = 'none';
+$bomb4.style.display = 'none';
+$bomb5.style.display = 'none';
+$bomb6.style.display = 'none';
+$bomb7.style.display = 'none';
+$bomb8.style.display = 'none';
 
 
 
@@ -43,6 +60,16 @@ $startButton.onclick = () => {
     $goodBall6.style.display = 'inline-block';
     $goodBall7.style.display = 'inline-block';
     $goodBall8.style.display = 'inline-block';
+    $bomb.style.display = 'inline-block';
+    $bomb2.style.display = 'inline-block';
+    $bomb3.style.display = 'inline-block';
+    $bomb4.style.display = 'inline-block';
+    $bomb5.style.display = 'inline-block';
+    $bomb6.style.display = 'inline-block';
+    $bomb7.style.display = 'inline-block';
+    $bomb8.style.display = 'inline-block';
+    Timer();
+    
     
     $background.src = "Img/Backgrounds/new background 1920x1080 v1.png";
 
@@ -64,6 +91,14 @@ function Ball(a){
     a.style.top = this.y + 'px';
     console.log(this.x + ',' + this.y)
 }
+function Bomb(a){
+    this.x = getRandomX(); + 'px'
+    this.y = getRandomY(); + 'px'
+    a.style.position = 'absolute'
+    a.style.left = this.x + 'px';
+    a.style.top = this.y + 'px';
+    console.log(this.x + ',' + this.y)
+}
 
 
 window.addEventListener('load', () => {
@@ -78,37 +113,31 @@ window.addEventListener('load', () => {
     var ball6 = new Ball($goodBall6);
     var ball7 = new Ball($goodBall7);
     var ball8 = new Ball($goodBall8);
+    var bomb1 = new Bomb($bomb);
+    var bomb2 = new Bomb($bomb2);
+    var bomb3 = new Bomb($bomb3);
+    var bomb4 = new Bomb($bomb4);
+    var bomb5 = new Bomb($bomb5);
+    var bomb6 = new Bomb($bomb6);
+    var bomb7 = new Bomb($bomb7);
+    var bomb8 = new Bomb($bomb8);
     
-   /* ball.push(ball1)
-    ball.push(ball2)
-    ball.push(ball3)
-    ball.push(ball4)
-    ball.push(ball5)
-    ball.push(ball6)
-    ball.push(ball7)
-    ball.push(ball8)*/
+
+    
      
 })
 
 function isCollideBall (a, b){
     
-   /* return !(
-        ((parseInt(a.style.top) + parseInt(a.style.height)) < parseInt(b.style.top)) ||
+    var aRect = a.getBoundingClientRect();
+    var bRect = b.getBoundingClientRect();
 
-        parseInt(a.style.top) > (parseInt(b.style.top) + parseInt(b.style.height)) ||
-
-        (parseInt(a.style.left) + parseInt(a.style.width)) < parseInt(b.style.left) ||
-
-        parseInt(a.style.left) > (parseInt(b.style.left) + parseInt(b.style.width))
-        
-    );*/
-
-    if (parseInt(a.style.top) === parseInt(b.style.top) && parseInt(a.style.left) === parseInt(b.style.left))
-    {
-        console.log("same coords");
-    }
-
-    return (parseInt(a.style.top) === parseInt(b.style.top) && parseInt(a.style.left) === parseInt(b.style.left))
+    return !(
+        ((aRect.top + aRect.height) < (bRect.top)) ||
+        (aRect.top > (bRect.top + bRect.height)) ||
+        ((aRect.left + aRect.width) < bRect.left) ||
+        (aRect.left > (bRect.left + bRect.width))
+    )
 
 
 }
@@ -154,8 +183,73 @@ function checkforCollision(){
     {
         moveBall($goodBall8)
         
+    }else if(isCollideBall($playerSprite, $bomb))//////
+    {
+        moveBall($bomb);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb2))
+    {
+        moveBall($bomb2);// replace with health -
+        
+          
+    }else if (isCollideBall($playerSprite, $bomb3))
+    {
+        moveBall($bomb3);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb4))
+    {
+        moveBall($bomb4);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb5))
+    {
+        moveBall($bomb5);// replace with health -
+       
+        
+    }else if(isCollideBall($playerSprite, $bomb6))
+    {
+        moveBall($bomb6);// replace with health -
+       
+        
+    }else if(isCollideBall($playerSprite, $bomb7))
+    {
+        moveBall($bomb7);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb8))
+    {
+        moveBall($bomb8);// replace with health -
+          
     }
     
+}
+
+function moveBombs()
+{
+    console.log('movebomb is being called');
+    $bomb.style.left = getRandomX() + 'px';
+    $bomb.style.top = getRandomY() + 'px';
+    $bomb2.style.left = getRandomX() + 'px';
+    $bomb2.style.top = getRandomY() + 'px';
+    $bomb3.style.left = getRandomX() + 'px';
+    $bomb3.style.top = getRandomY() + 'px';
+    $bomb4.style.left = getRandomX() + 'px';
+    $bomb4.style.top = getRandomY() + 'px';
+    $bomb5.style.left = getRandomX() + 'px';
+    $bomb5.style.top = getRandomY() + 'px';
+    $bomb6.style.left = getRandomX() + 'px';
+    $bomb6.style.top = getRandomY() + 'px';
+    $bomb7.style.left = getRandomX() + 'px';
+    $bomb7.style.top = getRandomY() + 'px';
+    $bomb8.style.left = getRandomX() + 'px';
+    $bomb8.style.top = getRandomY() + 'px';
+}
+
+function Timer()
+{
+    intVar = setInterval(moveBombs, 3000)
 }
 
 
