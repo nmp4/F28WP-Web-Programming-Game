@@ -57,8 +57,8 @@ $playerNameButton.onclick = () => {
 
 
 function Ball(a){
-    this.x = getRandomInt(1701) + 400;
-    this.y = getRandomInt(941) + 100;
+    this.x = getRandomX(); + 'px'
+    this.y = getRandomY(); + 'px'
     a.style.position = 'absolute'
     a.style.left = this.x + 'px';
     a.style.top = this.y + 'px';
@@ -116,7 +116,7 @@ function isCollideBall (a, b){
 function moveBall(a)
 {
     a.style.left = getRandomX() + 'px'
-    a.style.left = getRandomY() + 'px'
+    a.style.top = getRandomY() + 'px'
 };
 
 
@@ -260,33 +260,29 @@ function getRandomInt(int){
 }
 
 function getRandomX(){
-    var coordX = getRandomInt(1701) + 400;
+    var coordX = getRandomInt(1600) + 380;
     var coordXstring = coordX.toString();
     var lasttwochar = coordXstring.slice(-2);
     var lasttwodigits = +(lasttwochar); 
-    console.log(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)
-    if (lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)
-    {
-        return coordX;
-
-    }else 
-    {
-        getRandomX();
+    while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
+        coordX = getRandomInt(1600) + 400;
+        var coordXstring = coordX.toString();
+        var lasttwochar = coordXstring.slice(-2);
+        var lasttwodigits = +(lasttwochar); 
     }
+    return coordX;
 }
 
 function getRandomY() {
-    var coordY =  getRandomInt(941) + 100;
+    var coordY =  getRandomInt(841) + 100;
     var coordYstring = coordY.toString();
     var lasttwochar = coordYstring.slice(-2);
     var lasttwodigits = +(lasttwochar); 
-    console.log(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)
-    if (lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)
-    {
-        return coordY;
-
-    }else
-    {
-        getRandomY();
+    while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
+        coordY =  getRandomInt(841) + 100;
+        var coordYstring = coordY.toString();
+        var lasttwochar = coordYstring.slice(-2);
+        var lasttwodigits = +(lasttwochar); 
     }
-}
+    return coordY;
+    }
