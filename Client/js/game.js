@@ -1,8 +1,3 @@
-import Player from "./Client/js/player.js";
-import Bomb from "./Client/js/bomb.js";
-import Ball from "./Client/js/ball.js";
-
-
 const $startButton = document.getElementById("startButton"); // DOM call for startbutton object
 const $background = document.getElementById('background'); // DOM call for background object
 const $playerNameInput = document.getElementById('playerNameInput'); // DOM call for name textbox object
@@ -24,17 +19,22 @@ const $bomb5 = document.querySelector('#bomb5') // DOM call for bomb 5 object
 const $bomb6 = document.querySelector('#bomb6') // DOM call for bomb 6 object
 const $bomb7 = document.querySelector('#bomb7') // DOM call for bomb 7 object
 const $bomb8 = document.querySelector('#bomb8') // DOM call for bomb 8 object
-const $bomb9 = document.querySelector('#bomb9') // DOM call for bomb 8 object
-const $bomb10 = document.querySelector('#bomb10') // DOM call for bomb 8 object
-const $bomb11 = document.querySelector('#bomb11') // DOM call for bomb 8 object
-const $bomb12 = document.querySelector('#bomb12') // DOM call for bomb 8 object
-const $bomb13 = document.querySelector('#bomb13') // DOM call for bomb 8 object
+const $bomb9 = document.querySelector('#bomb9') // DOM call for bomb 9 object
+const $bomb10 = document.querySelector('#bomb10') // DOM call for bomb 10 object
+const $bomb11 = document.querySelector('#bomb11') // DOM call for bomb 11 object
+const $bomb12 = document.querySelector('#bomb12') // DOM call for bomb 12 object
+const $bomb13 = document.querySelector('#bomb13') // DOM call for bomb 13 object
+const $tnt = document.querySelector('#tnt')
+const $tnt2 = document.querySelector('#tnt2')
+const $tnt3 = document.querySelector('#tnt3')
+const $tnt4 = document.querySelector('#tnt4')
+const $tnt5 = document.querySelector('#tnt5')
 const $playerName = document.getElementById('playerNameInput').value; //DOM call for player name value
 
 let moveBy = 20; //player speed (in pixels)
 var intVar; // variable to later store set interval
 
-let player = new Player($playerName, $playerSprite, $playerSprite.style.left,$playerSprite.style.top );
+//let player = new Player($playerName, $playerSprite, $playerSprite.style.left,$playerSprite.style.top );
 
 
 $playerSprite.style.display = 'none'; //hide player sprite
@@ -59,6 +59,11 @@ $bomb10.style.display = 'none';//  *    *      *
 $bomb11.style.display = 'none';//  *    *      *
 $bomb12.style.display = 'none';//  *    *      *
 $bomb13.style.display = 'none';//  *    *      *
+$tnt.style.display = 'none';//  *    *      *
+$tnt2.style.display = 'none';//  *    *      *
+$tnt3.style.display = 'none';//  *    *      *
+$tnt4.style.display = 'none';//  *    *      *
+$tnt5.style.display = 'none';//  *    *      *
 
 
 
@@ -89,6 +94,11 @@ $startButton.onclick = () => { //define clicking the start button as function
     $bomb11.style.display = 'inline-block'; //  *    *     *
     $bomb12.style.display = 'inline-block'; //  *    *     *
     $bomb13.style.display = 'inline-block'; //  *    *     *
+    $tnt.style.display = 'inline-block'; //  *    *     *
+    $tnt2.style.display = 'inline-block'; //  *    *     *
+    $tnt3.style.display = 'inline-block'; //  *    *     *
+    $tnt4.style.display = 'inline-block'; //  *    *     *
+    $tnt5.style.display = 'inline-block'; //  *    *     *
      
     Timer(); //call timer function 
     $background.src = "Img/Backgrounds/new background 1920x1080 v1.png"; //change background image to in-game background
@@ -110,6 +120,15 @@ function Ball(a){
     console.log(this.x + ',' + this.y)
 }
 function Bomb(a){
+    this.x = getRandomX(); + 'px'
+    this.y = getRandomY(); + 'px'
+    a.style.position = 'absolute'
+    a.style.left = this.x + 'px';
+    a.style.top = this.y + 'px';
+    console.log(this.x + ',' + this.y)
+}
+
+function Tnt(a){
     this.x = getRandomX(); + 'px'
     this.y = getRandomY(); + 'px'
     a.style.position = 'absolute'
@@ -144,23 +163,18 @@ window.addEventListener('load', () => {
     var bomb11 = new Bomb($bomb11);
     var bomb12 = new Bomb($bomb12);
     var bomb13 = new Bomb($bomb13);
+    var tnt1 = new Tnt($tnt);
+    var tnt2 = new Tnt($tnt2);
+    var tnt3 = new Tnt($tnt3);
+    var tnt4 = new Tnt($tnt4);
+    var tnt5 = new Tnt($tnt5);
+
     
     
 
     
      
 })
-
-function getPlayerLeft()
-{
-    var x = $playerSprite.style.left
-    return x
-}
-
-function getPlayerTop()
-{
-    var y = $playerSprite.style.top
-}
 
 
 function isCollideBall (a, b){
@@ -278,6 +292,26 @@ function checkforCollision(){
     {
         moveBall($bomb13);// replace with health -
           
+    }else if(isCollideBall($playerSprite, $tnt))
+    {
+        moveBall($tnt);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt2))
+    {
+        moveBall($tnt2);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt3))
+    {
+        moveBall($tnt3);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt4))
+    {
+        moveBall($tnt4);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt5))
+    {
+        moveBall($tnt5);// replace with health -
+          
     }
     
 }
@@ -311,6 +345,16 @@ function moveBombs()
     $bomb12.style.top = getRandomY() + 'px';
     $bomb13.style.left = getRandomX() + 'px';
     $bomb13.style.top = getRandomY() + 'px';
+    $tnt.style.left = getRandomX() + 'px';
+    $tnt.style.top = getRandomY() + 'px';
+    $tnt2.style.left = getRandomX() + 'px';
+    $tnt2.style.top = getRandomY() + 'px';
+    $tnt3.style.left = getRandomX() + 'px';
+    $tnt3.style.top = getRandomY() + 'px';
+    $tnt4.style.left = getRandomX() + 'px';
+    $tnt4.style.top = getRandomY() + 'px';
+    $tnt5.style.left = getRandomX() + 'px';
+    $tnt5.style.top = getRandomY() + 'px';
     
 }
 
