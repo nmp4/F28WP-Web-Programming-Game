@@ -1,3 +1,5 @@
+import game from "./Client/js/game.js"
+
 const { Domain } = require("domain");
 let express = require("express");
 let app = express();

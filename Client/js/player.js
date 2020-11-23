@@ -23,6 +23,10 @@ class Player{
         return this._sprite;
     }
 
+    get health(){
+        return this._health;
+    }
+
     setPlayerName(input){
         _name = input;
     }
@@ -37,5 +41,26 @@ class Player{
 
     setPlayerY(input){
         _playerY = input;
+    }
+
+    damage(input){
+        this.health = this.health - input;
+        return this.health;
+    }
+
+    hidePlayerSprite(){
+        this._sprite.style.display = "none";
+    }
+
+    hidePlayerName(){
+        this._name.style.display = "none";
+    }
+
+    showPlayerSprite(){
+        this._sprite.style.display = "inline-block";
+    }
+
+    question(){
+        this._sprite.style.position = "absolute"
     }
 }
