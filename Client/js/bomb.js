@@ -17,5 +17,9 @@ class Bomb{
         return this._bomb;
     }
 
+    setBombX(input){
+        _bombX = input;
+    }
+
     
 }

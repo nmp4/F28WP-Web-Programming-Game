@@ -1,3 +1,8 @@
+import Player from "./Client/js/player.js";
+import Bomb from "./Client/js/bomb.js";
+import Ball from "./Client/js/ball.js";
+
+
 const $startButton = document.getElementById("startButton"); // DOM call for startbutton object
 const $background = document.getElementById('background'); // DOM call for background object
 const $playerNameInput = document.getElementById('playerNameInput'); // DOM call for name textbox object
