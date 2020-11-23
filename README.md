@@ -15,6 +15,7 @@
 
 ## Game Premise
 
-This game is based on football, except there are 8 total players fighting each other in deathmatches. Where the main goal is to score as many points in anyone elses goal.
+This game is based on being a ball boy who collects football balls once a football pratice session is done.
+The player collects balls, earn points, and avoids obstacles that may cause them damage.
 
 ##
