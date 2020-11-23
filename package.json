@@ -20,6 +20,7 @@
   "homepage": "https://github.com/nmp4/F28WP-Web-Programming-Game#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^3.0.3"
+    "socket.io": "^3.0.3",
+    "uniq": "^1.0.1"
   }
 }

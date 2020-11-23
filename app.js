@@ -19,7 +19,10 @@ let io = require("socket.io")(serv, {});
 let SOCKETLIST = {};
 io.sockets.on("connection", function(socket){
     socket.id = Math.floor(Math.random() * 10000);
-    socket.player = new Player();
+
+    let _game = game;
+
+    _game.loadGame();
 
     SOCKETLIST[socket.id] = socket;
 
