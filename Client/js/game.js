@@ -1,6 +1,6 @@
 const $startButton = document.getElementById("startButton"); // DOM call for startbutton object
 const $background = document.getElementById('background'); // DOM call for background object
-const $playerNameInput = document.getElementById('playerNameInput'); // DOM call for name textbox object
+const $playerNameInput = document.getElementById('playerNameInput');
 const $playerNameButton = document.getElementById('playerNameButton'); // DOM call for enter text button object
 const $playerSprite = document.getElementById('playerSprite'); // DOM call for player character object
 const $goodBall = document.querySelector('#goodBall'); // DOM call for ball 1 object
@@ -29,10 +29,23 @@ const $tnt2 = document.querySelector('#tnt2')
 const $tnt3 = document.querySelector('#tnt3')
 const $tnt4 = document.querySelector('#tnt4')
 const $tnt5 = document.querySelector('#tnt5')
-const $playerName = document.getElementById('playerNameInput').value; //DOM call for player name value
+var isGameOn = false;
+var $healthpack = document.querySelector('#healthpack')
+var $gameOverScreen = document.querySelector('#gameOverScreen')
+var $toMenuButton = document.querySelector('#toMenuButton')
+
+
+
+
 
 let moveBy = 20; //player speed (in pixels)
 var intVar; // variable to later store set interval
+var intVarHealth;
+
+
+var health = 100
+document.getElementById('health').innerHTML = health
+
 
 //let player = new Player($playerName, $playerSprite, $playerSprite.style.left,$playerSprite.style.top );
 
@@ -64,6 +77,7 @@ $tnt2.style.display = 'none';//  *    *      *
 $tnt3.style.display = 'none';//  *    *      *
 $tnt4.style.display = 'none';//  *    *      *
 $tnt5.style.display = 'none';//  *    *      *
+$healthpack.style.display = 'none';
 
 
 
@@ -99,15 +113,21 @@ $startButton.onclick = () => { //define clicking the start button as function
     $tnt3.style.display = 'inline-block'; //  *    *     *
     $tnt4.style.display = 'inline-block'; //  *    *     *
     $tnt5.style.display = 'inline-block'; //  *    *     *
+    $healthpack.style.display = 'inline-block';
+    isGameOn = true;
+    
      
     Timer(); //call timer function 
     $background.src = "Img/Backgrounds/new background 1920x1080 v1.png"; //change background image to in-game background
 
 }
 
-$playerNameButton.onclick = () => { //defiine clicking the enter name button as function
+$playerNameButton.onclick = () => { //define clicking the enter name button as function
+    var $playerNameValue = document.getElementById('playerNameInput').value // DOM call for name textbox object
     $playerNameInput.style.display = 'none'; //hide text input
     $playerNameButton.style.display = 'none'; //hide text input button
+    document.getElementById('playername').innerHTML = $playerNameValue
+    
 };
 
 
@@ -161,6 +181,11 @@ function loadTnt(){
     var tnt5 = new gameObject($tnt5);
 }
 
+function loadHealthPack()
+{
+    var healthpack = new gameObject($healthpack);
+}
+
 
 function loadGame(){
 
@@ -169,6 +194,7 @@ function loadGame(){
         loadBalls();
         loadBombs();
         loadTnt();
+        loadHealthPack();
      
     })
 }
@@ -178,6 +204,7 @@ function loadGame(){
 
 loadGame();
 getPlayerPos();
+
 
 function isCollideBall (a, b){
     
@@ -194,7 +221,7 @@ function isCollideBall (a, b){
 
 }
 
-function moveBall(a)
+function movegameObject(a)
 {
     a.style.left = getRandomX() + 'px'
     a.style.top = getRandomY() + 'px'
@@ -205,115 +232,215 @@ function moveBall(a)
 function checkforCollision(){
     if(isCollideBall($playerSprite, $goodBall))
     {
-        moveBall($goodBall);
+        movegameObject($goodBall);
         
     }else if(isCollideBall($playerSprite, $goodBall2))
     {
-        moveBall($goodBall2);
+        movegameObject($goodBall2);
           
     }else if (isCollideBall($playerSprite, $goodBall3))
     {
-        moveBall($goodBall3);
+        movegameObject($goodBall3);
         
     }else if(isCollideBall($playerSprite, $goodBall4))
     {
-        moveBall($goodBall4);
+        movegameObject($goodBall4);
         
     }else if(isCollideBall($playerSprite, $goodBall5))
     {
-        moveBall($goodBall5);
+        movegameObject($goodBall5);
         
     }else if(isCollideBall($playerSprite, $goodBall6))
     {
-        moveBall($goodBall6);
+        movegameObject($goodBall6);
         
     }else if(isCollideBall($playerSprite, $goodBall7))
     {
-        moveBall($goodBall7);
+        movegameObject($goodBall7);
         
     }else if(isCollideBall($playerSprite, $goodBall8))
     {
-        moveBall($goodBall8)
+        movegameObject($goodBall8)
         
     }else if(isCollideBall($playerSprite, $bomb))//////
     {
-        moveBall($bomb);// replace with health -
+        movegameObject($bomb);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
         
         
     }else if(isCollideBall($playerSprite, $bomb2))
     {
-        moveBall($bomb2);// replace with health -
-        
+        movegameObject($bomb2);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if (isCollideBall($playerSprite, $bomb3))
     {
-        moveBall($bomb3);// replace with health -
+        movegameObject($bomb3);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
         
         
     }else if(isCollideBall($playerSprite, $bomb4))
     {
-        moveBall($bomb4);// replace with health -
+        movegameObject($bomb4);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
         
         
     }else if(isCollideBall($playerSprite, $bomb5))
     {
-        moveBall($bomb5);// replace with health -
+        movegameObject($bomb5);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
        
         
     }else if(isCollideBall($playerSprite, $bomb6))
     {
-        moveBall($bomb6);// replace with health -
+        movegameObject($bomb6);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
        
         
     }else if(isCollideBall($playerSprite, $bomb7))
     {
-        moveBall($bomb7);// replace with health -
+        movegameObject($bomb7);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
         
         
     }else if(isCollideBall($playerSprite, $bomb8))
     {
-        moveBall($bomb8);// replace with health -
+        movegameObject($bomb8);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $bomb9))
     {
-        moveBall($bomb9);// replace with health -
+        movegameObject($bomb9);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $bomb10))
     {
-        moveBall($bomb10);// replace with health -
+        movegameObject($bomb10);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $bomb11))
     {
-        moveBall($bomb11);// replace with health -
+        movegameObject($bomb11);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $bomb12))
     {
-        moveBall($bomb12);// replace with health -
+        movegameObject($bomb12);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $bomb13))
     {
-        moveBall($bomb13);// replace with health -
+        movegameObject($bomb13);
+        health = health -25
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $tnt))
     {
-        moveBall($tnt);// replace with health -
+        movegameObject($tnt);
+        health = health -50
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
+        
           
     }else if(isCollideBall($playerSprite, $tnt2))
     {
-        moveBall($tnt2);// replace with health -
+        movegameObject($tnt2);
+        health = health -50
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $tnt3))
     {
-        moveBall($tnt3);// replace with health -
+        movegameObject($tnt3);
+        health = health -50
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $tnt4))
     {
-        moveBall($tnt4);// replace with health -
+        movegameObject($tnt4);
+        health = health -50
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
     }else if(isCollideBall($playerSprite, $tnt5))
     {
-        moveBall($tnt5);// replace with health -
+        movegameObject($tnt5);
+        health = health -50
+        document.getElementById('health').innerHTML = health
+        checkDead();
+        console.log(health)
+        return health;
           
+    }else if(isCollideBall($playerSprite, $healthpack))
+    {
+        movegameObject($healthpack)
+        health = health +50
+        document.getElementById('health').innerHTML = health
+        
+        console.log(health)
+        return health;
+        
+        
     }
     
 }
@@ -360,16 +487,87 @@ function moveBombs()
     
 }
 
+function moveHealthPack()
+{
+    $healthpack.style.left = getRandomX() + 'px';
+    $healthpack.style.top = getRandomY() + 'px';
+}
+
 function Timer()
 {
-    intVar = setInterval(moveBombs, 3000)
+    if(isGameOn === true){
+        intVar = setInterval(moveBombs, 3000)
+        intVarHealth = setInterval(moveHealthPack, 10000)
+    }else{
+        clearInterval(intVar);
+        clearInterval(intVarHealth);
+    }
+    
+
 }
+
+function checkDead()
+{
+    if (health <= 0)
+    {
+        $playerSprite.style.display = 'none';
+        $gameOverScreen.style.display = 'inline-block';
+        $toMenuButton.style.display = 'inline-block';
+        isGameOn = false;
+        Timer(); //call timer function 
+        
+        
+    }
+}
+
+
+$toMenuButton.onclick = () => {
+    $background.src = "Img/MainMenu/Menu Page1.png"
+    $gameOverScreen.style.display = 'none';
+    $toMenuButton.style.display = 'none';
+    $startButton.style.display = 'inline-block';
+    $playerNameInput.style.display = 'inline-block';
+    $playerNameButton.style.display = 'inline-block';
+    $goodBall.style.display = 'none'; //hide ball sprite
+    $goodBall2.style.display = 'none';// *     *     *
+    $goodBall3.style.display = 'none';// *     *     *
+    $goodBall4.style.display = 'none';// *     *     *
+    $goodBall5.style.display = 'none';// *     *     *
+    $goodBall6.style.display = 'none';// *     *     *
+    $goodBall7.style.display = 'none';// *     *     *
+    $goodBall8.style.display = 'none';// *     *     *
+    $bomb.style.display = 'none'; // hide bomb sprite
+    $bomb2.style.display = 'none';//  *    *      *
+    $bomb3.style.display = 'none';//  *    *      *
+    $bomb4.style.display = 'none';//  *    *      *
+    $bomb5.style.display = 'none';//  *    *      *
+    $bomb6.style.display = 'none';//  *    *      *
+    $bomb7.style.display = 'none';//  *    *      *
+    $bomb8.style.display = 'none';//  *    *      *
+    $bomb9.style.display = 'none';//  *    *      *
+    $bomb10.style.display = 'none';//  *    *      *
+    $bomb11.style.display = 'none';//  *    *      *
+    $bomb12.style.display = 'none';//  *    *      *
+    $bomb13.style.display = 'none';//  *    *      *
+    $tnt.style.display = 'none';//  *    *      *
+    $tnt2.style.display = 'none';//  *    *      *
+    $tnt3.style.display = 'none';//  *    *      *
+    $tnt4.style.display = 'none';//  *    *      *
+    $tnt5.style.display = 'none';//  *    *      *
+    $healthpack.style.display = 'none';
+    health = 100;
+    document.getElementById('health').innerHTML = health
+    
+        
+
+}
+
 
 function getPlayerPos(){
 
     window.addEventListener('keydown', (e) => {
-        switch (e.key) { //Movement fuction detects when arrow keys down
-            case 'ArrowLeft':
+        switch (e.keyCode) { //Movement fuction detects when arrow keys down
+            case 65:
                 moveBy = 20;
                 
                 checkforCollision()
@@ -392,7 +590,7 @@ function getPlayerPos(){
                 }
                 break;
     
-            case 'ArrowRight':
+            case 68:
                 moveBy = 20;
                 
                 checkforCollision()
@@ -414,7 +612,7 @@ function getPlayerPos(){
                 }
                 break;
     
-            case 'ArrowUp':
+            case 87:
                 moveBy = 20;
                 
                 checkforCollision()
@@ -436,7 +634,7 @@ function getPlayerPos(){
                 }
                 break;
     
-            case 'ArrowDown':
+            case 83:
                 moveBy = 20;
         
                 checkforCollision()
@@ -472,28 +670,10 @@ function getRandomInt(int){
 
 function getRandomX(){
     var coordX = getRandomInt(1600) + 380;
-    ///var coordXstring = coordX.toString();
-    ///var lasttwochar = coordXstring.slice(-2);
-    ///var lasttwodigits = +(lasttwochar); 
-    //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
-        //coordX = getRandomInt(1600) + 400;
-        //var coordXstring = coordX.toString();
-        //var lasttwochar = coordXstring.slice(-2);
-        //var lasttwodigits = +(lasttwochar); 
-    //}
     return coordX;
 }
 
 function getRandomY() {
     var coordY =  getRandomInt(841) + 100;
-    ///var coordYstring = coordY.toString();
-    ///var lasttwochar = coordYstring.slice(-2);
-    ///var lasttwodigits = +(lasttwochar); 
-    //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
-        //coordY =  getRandomInt(841) + 100;
-        //var coordYstring = coordY.toString();
-        //var lasttwochar = coordYstring.slice(-2);
-        //var lasttwodigits = +(lasttwochar); 
-    //}
     return coordY;
     }
