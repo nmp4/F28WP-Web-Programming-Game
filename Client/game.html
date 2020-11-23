@@ -4,11 +4,33 @@
 
 
     <style>
-        #tnt, #tnt2, #tnt3, #tnt4, #tnt5, #bomb, #bomb2, #bomb3, #bomb4, #bomb5, #bomb6, #bomb7, #bomb8, #bomb9, #bomb10, #bomb11, #bomb12, #bomb13 #goodBall, #goodBall2, #goodBall3, #goodBall4, #goodBall5, #goodBall6, #goodBall7, #goodBall8 {
+        #healthpack, #tnt, #tnt2, #tnt3, #tnt4, #tnt5, #bomb, #bomb2, #bomb3, #bomb4, #bomb5, #bomb6, #bomb7, #bomb8, #bomb9, #bomb10, #bomb11, #bomb12, #bomb13 #goodBall, #goodBall2, #goodBall3, #goodBall4, #goodBall5, #goodBall6, #goodBall7, #goodBall8 {
             z-index: 2;
         }
 
         html {background-color: #222222}
+
+        .healthHeading {
+            text-align:center;
+            margin-top: 1025px;
+            margin-left: 1250px;
+            color:white;
+            font-family:'Comic Sans MS';
+            font-size: 28pt;
+            position: absolute;
+        }
+
+        h2 {
+            
+            margin-top: 1095px;
+            color:white;
+            font-family:'Comic Sans MS';
+            font-size: 40pt;
+            margin-left: 400px;
+            position: absolute;
+            
+        }
+
 
         #background {
             position: absolute;
@@ -35,6 +57,16 @@
             left: 985px;
             z-index: 2;
         }
+        #toMenuButton
+        {
+            left: 985px;
+            top: 700px;
+            position: absolute;
+            z-index: 4;
+            display: none;
+            height: 0px;
+            width: 0px;
+        }
 
         #playerNameButton {
             height: 0px;
@@ -46,7 +78,6 @@
         }
 
        #instructions{
-           margin-top: 1025px;
            text-align:center;
            color:white;
        }
@@ -55,6 +86,18 @@
             top: 540px;
             left: 1100px;
             z-index: 2;
+        }
+        
+        #gameOverScreen{
+            position: absolute;
+            top: 10px;
+            left: 300px;
+            z-index: 3;
+            display: none;
+        }
+
+        #blueSprite, #blackSprite, #pinkSprite, #greenSprite, #redSprite{
+        display: none;
         }
 
     </style>
@@ -71,6 +114,10 @@
     <button id="playerNameButton">
         <img src="Img\MainMenu\buttonenter.png">
     </button>
+    <button id = "toMenuButton">
+        <img src = "Img\MainMenu\buttonenter.png">
+    </button>
+    <object data = "Img\Backgrounds\game over screen.png" id = "gameOverScreen"></object>
     <object data="Img\Sprites\Spirtes\Blue Man\walk-to-the-left.png" id="blueSprite"></object>
     <object data="Img\Sprites\Spirtes\Black Man\walk-to-the-left.png" id="blackSprite"></object>
     <object data="Img\Sprites\Spirtes\Green Man\walk-to-the-left.png" id="greenSprite"></object>
@@ -103,6 +150,12 @@
     <object data="Img\Backgrounds\Tnt.png" id="tnt3"></object>
     <object data="Img\Backgrounds\Tnt.png" id="tnt4"></object>
     <object data="Img\Backgrounds\Tnt.png" id="tnt5"></object>
+    <object data="Img\Backgrounds\health pack.png" id="healthpack"></object>
+    <h2 id = 'playername'></h2>
+    <div class="healthHeading">
+        <h1>Health</h1>
+        <div id="health"></div>
+    </div>
     <div id="instructions">
         Use Arrow Keys To Move
         <br />
