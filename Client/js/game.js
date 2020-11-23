@@ -25,7 +25,7 @@ var ball = []
 let moveBy = 20;
 var intVar;
 
-
+let player = new Player($playerName, $playerSprite, $playerSprite.style.left,$playerSprite.style.top );
 
 $playerSprite.style.display = 'none';
 $goodBall.style.display = 'none';

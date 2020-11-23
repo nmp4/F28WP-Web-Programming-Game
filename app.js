@@ -14,18 +14,20 @@ console.log("Server Started");
 
 let io = require("socket.io")(serv, {});
 
+let SOCKETLIST = {};
 io.sockets.on("connection", function(socket){
     socket.id = Math.floor(Math.random() * 10000);
+    socket.player = new Player();
 
     SOCKETLIST[socket.id] = socket;
 
     console.log("socket connection");
 });
 
-let SOCKETLIST = {};
 
 setInterval(function(){
     for(let i in SOCKETLIST){
         let socket = SOCKETLIST[i];
+        
     }
 },1000/30);
