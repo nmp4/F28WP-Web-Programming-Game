@@ -1,4 +1,4 @@
-class Bomb{
+class Explosive{
     constructor(bomb, bombX, bombY){
         _bomb = bomb;
         _bombX = bombX;
@@ -21,5 +21,5 @@ class Bomb{
         _bombX = input;
     }
 
-    
+
 }
