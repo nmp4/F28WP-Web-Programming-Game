@@ -20,10 +20,11 @@
         #playerNameInput {
             position: absolute;
             top: 450px;
-            left: 1095px;
+            left: 1082px;
             z-index: 2;
             height: 75px;
             width: 300px;
+            font-size: 20pt;
         }
 
         #startButton {
@@ -39,13 +40,16 @@
             height: 0px;
             width: 0px;
             position: absolute;
-            top: 540px;
-            left: 1100px;
+            top: 243px;
+            left: 1350px;
             z-index: 2;
         }
 
-       
-
+       #instructions{
+           margin-top: 1025px;
+           text-align:center;
+           color:white;
+       }
         #playerSprite {
             position: absolute;
             top: 540px;
@@ -72,7 +76,7 @@
     <object data="Img\Sprites\Spirtes\Green Man\walk-to-the-left.png" id="greenSprite"></object>
     <object data="Img\Sprites\Spirtes\Pink Man\walk-to-the-left.png" id="pinkSprite"></object>
     <object data="Img\Sprites\Spirtes\Red Man\walk-to-the-left.png" id="redSprite"></object>
-    <object data="Img\Sprites\Spirtes\White Man\walk-to-the-left.png" id="playerSprite"></object>
+    <object data="Img\Sprites\Spirtes\Black Man\black left.gif" id="playerSprite"></object>
     <object data="Img\Backgrounds\ball x3.png" id="goodBall"></object>
     <object data="Img\Backgrounds\ball x3.png" id="goodBall2"></object>
     <object data="Img\Backgrounds\ball x3.png" id="goodBall3"></object>
@@ -99,6 +103,11 @@
     <object data="Img\Backgrounds\Tnt.png" id="tnt3"></object>
     <object data="Img\Backgrounds\Tnt.png" id="tnt4"></object>
     <object data="Img\Backgrounds\Tnt.png" id="tnt5"></object>
+    <div id="instructions">
+        Use Arrow Keys To Move
+        <br />
+        <p>Collect The Balls, Avoid The Explosives!</p>
+    </div>
     <script src="js\game.js"></script>
 </body>
 <script src="js\game.js"></script>
