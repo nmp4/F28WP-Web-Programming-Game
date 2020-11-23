@@ -111,71 +111,73 @@ $playerNameButton.onclick = () => { //defiine clicking the enter name button as 
 };
 
 
-function Ball(a){
-    this.x = getRandomX(); + 'px'
-    this.y = getRandomY(); + 'px'
-    a.style.position = 'absolute'
-    a.style.left = this.x + 'px';
-    a.style.top = this.y + 'px';
-    console.log(this.x + ',' + this.y)
-}
-function Bomb(a){
-    this.x = getRandomX(); + 'px'
-    this.y = getRandomY(); + 'px'
-    a.style.position = 'absolute'
-    a.style.left = this.x + 'px';
+function gameObject(a){ //creates ball object
+    this.x = getRandomX(); + 'px' //get x coord from random int generator
+    this.y = getRandomY(); + 'px' //get y coord from random int generator
+    a.style.position = 'absolute' //create object on top of everything
+    a.style.left = this.x + 'px'; //assign a
     a.style.top = this.y + 'px';
     console.log(this.x + ',' + this.y)
 }
 
-function Tnt(a){
-    this.x = getRandomX(); + 'px'
-    this.y = getRandomY(); + 'px'
-    a.style.position = 'absolute'
-    a.style.left = this.x + 'px';
-    a.style.top = this.y + 'px';
-    console.log(this.x + ',' + this.y)
-}
-
-
-window.addEventListener('load', () => {
+function loadPlayer(){
     $playerSprite.style.position = 'absolute';
-    $playerSprite.style.left = 960 + "px";
+    $playerSprite.style.left = 1200 + "px";
     $playerSprite.style.top = 500 + "px";
-    var ball1 = new Ball($goodBall);
-    var ball2 = new Ball($goodBall2);
-    var ball3 = new Ball($goodBall3);
-    var ball4 = new Ball($goodBall4);
-    var ball5 = new Ball($goodBall5);
-    var ball6 = new Ball($goodBall6);
-    var ball7 = new Ball($goodBall7);
-    var ball8 = new Ball($goodBall8);
-    var bomb1 = new Bomb($bomb);
-    var bomb2 = new Bomb($bomb2);
-    var bomb3 = new Bomb($bomb3);
-    var bomb4 = new Bomb($bomb4);
-    var bomb5 = new Bomb($bomb5);
-    var bomb6 = new Bomb($bomb6);
-    var bomb7 = new Bomb($bomb7);
-    var bomb8 = new Bomb($bomb8);
-    var bomb9 = new Bomb($bomb9);
-    var bomb10 = new Bomb($bomb10);
-    var bomb11 = new Bomb($bomb11);
-    var bomb12 = new Bomb($bomb12);
-    var bomb13 = new Bomb($bomb13);
-    var tnt1 = new Tnt($tnt);
-    var tnt2 = new Tnt($tnt2);
-    var tnt3 = new Tnt($tnt3);
-    var tnt4 = new Tnt($tnt4);
-    var tnt5 = new Tnt($tnt5);
+}
 
-    
-    
+function loadBalls(){
+    var ball1 = new gameObject($goodBall);
+    var ball2 = new gameObject($goodBall2);
+    var ball3 = new gameObject($goodBall3);
+    var ball4 = new gameObject($goodBall4);
+    var ball5 = new gameObject($goodBall5);
+    var ball6 = new gameObject($goodBall6);
+    var ball7 = new gameObject($goodBall7);
+    var ball8 = new gameObject($goodBall8);
+}
 
-    
+function loadBombs(){
+    var bomb1 = new gameObject($bomb);
+    var bomb2 = new gameObject($bomb2);
+    var bomb3 = new gameObject($bomb3);
+    var bomb4 = new gameObject($bomb4);
+    var bomb5 = new gameObject($bomb5);
+    var bomb6 = new gameObject($bomb6);
+    var bomb7 = new gameObject($bomb7);
+    var bomb8 = new gameObject($bomb8);
+    var bomb9 = new gameObject($bomb9);
+    var bomb10 = new gameObject($bomb10);
+    var bomb11 = new gameObject($bomb11);
+    var bomb12 = new gameObject($bomb12);
+    var bomb13 = new gameObject($bomb13);
+}
+
+function loadTnt(){
+    var tnt1 = new gameObject($tnt);
+    var tnt2 = new gameObject($tnt2);
+    var tnt3 = new gameObject($tnt3);
+    var tnt4 = new gameObject($tnt4);
+    var tnt5 = new gameObject($tnt5);
+}
+
+
+function loadGame(){
+
+    window.addEventListener('load', () => {
+        loadPlayer();
+        loadBalls();
+        loadBombs();
+        loadTnt();
      
-})
+    })
+}
 
+
+
+
+loadGame();
+getPlayerPos();
 
 function isCollideBall (a, b){
     
@@ -363,102 +365,106 @@ function Timer()
     intVar = setInterval(moveBombs, 3000)
 }
 
+function getPlayerPos(){
 
-window.addEventListener('keydown', (e) => {
-    switch (e.key) { //Movement fuction detects when arrow keys down
-        case 'ArrowLeft':
-            moveBy = 20;
-            
-            checkforCollision()
-            if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+    window.addEventListener('keydown', (e) => {
+        switch (e.key) { //Movement fuction detects when arrow keys down
+            case 'ArrowLeft':
+                moveBy = 20;
                 
-            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-                
-            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-                
-            } else if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                
-                moveBy = 0;
-            } else { //At no borders
-                $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
-                
-
-            }
-            break;
-
-        case 'ArrowRight':
-            moveBy = 20;
-            
-            checkforCollision()
-            if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-                
-            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-                
-            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
-                
-            } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                moveBy = 0;
-                
-            } else { //At no borders
-                $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px';
-                
-            }
-            break;
-
-        case 'ArrowUp':
-            moveBy = 20;
-            
-            checkforCollision()
-            if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-                
-            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-                
-            } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-                
-            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                moveBy = 0;
-                
-            } else { //At no borders
-                $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
-                
-            }
-            break;
-
-        case 'ArrowDown':
-            moveBy = 20;
+                checkforCollision()
+                if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    
+                    moveBy = 0;
+                } else { //At no borders
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
     
-            checkforCollision()
-            if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                }
+                break;
+    
+            case 'ArrowRight':
+                moveBy = 20;
                 
-            } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                checkforCollision()
+                if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    moveBy = 0;
+                    
+                } else { //At no borders
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px';
+                    
+                }
+                break;
+    
+            case 'ArrowUp':
+                moveBy = 20;
                 
-            } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
-                
-            } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                moveBy = 0;
-                
-            }else { //At no borders
-                $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
-                
-
-            }
-
-            break;
+                checkforCollision()
+                if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    moveBy = 0;
+                    
+                } else { //At no borders
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                }
+                break;
+    
+            case 'ArrowDown':
+                moveBy = 20;
+        
+                checkforCollision()
+                if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    moveBy = 0;
+                    
+                }else { //At no borders
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+    
+                }
+    
+                break;
+        }
     }
+    )
+
 }
-)
+
 
 function getRandomInt(int){
     return Math.floor(Math.random() * Math.floor(int));
