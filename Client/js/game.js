@@ -31,6 +31,7 @@ const $tnt4 = document.querySelector('#tnt4')
 const $tnt5 = document.querySelector('#tnt5')
 const $playerName = document.getElementById('playerNameInput').value; //DOM call for player name value
 
+let moveBy = 20; //player speed (in pixels)
 var intVar; // variable to later store set interval
 
 //let player = new Player($playerName, $playerSprite, $playerSprite.style.left,$playerSprite.style.top );
@@ -110,404 +111,389 @@ $playerNameButton.onclick = () => { //defiine clicking the enter name button as 
 };
 
 
-
-
-
-
-
-
-export default class Game{
-    constructor(){
-        score = 0;
-        playerSpeed = 20;
-    }
-
-    
-
-      gameObject(a){ //creates ball object
-        this.x = getRandomX(); + 'px' //get x coord from random int generator
-        this.y = getRandomY(); + 'px' //get y coord from random int generator
-        a.style.position = 'absolute' //create object on top of everything
-        a.style.left = this.x + 'px'; //assign a
-        a.style.top = this.y + 'px';
-        console.log(this.x + ',' + this.y)
-    }
-    
-      loadPlayer(){
-        $playerSprite.style.position = 'absolute';
-        $playerSprite.style.left = 1200 + "px";
-        $playerSprite.style.top = 500 + "px";
-    }
-    
-      loadBalls(){
-        var ball1 = new gameObject($goodBall);
-        var ball2 = new gameObject($goodBall2);
-        var ball3 = new gameObject($goodBall3);
-        var ball4 = new gameObject($goodBall4);
-        var ball5 = new gameObject($goodBall5);
-        var ball6 = new gameObject($goodBall6);
-        var ball7 = new gameObject($goodBall7);
-        var ball8 = new gameObject($goodBall8);
-    }
-    
-      loadBombs(){
-        var bomb1 = new gameObject($bomb);
-        var bomb2 = new gameObject($bomb2);
-        var bomb3 = new gameObject($bomb3);
-        var bomb4 = new gameObject($bomb4);
-        var bomb5 = new gameObject($bomb5);
-        var bomb6 = new gameObject($bomb6);
-        var bomb7 = new gameObject($bomb7);
-        var bomb8 = new gameObject($bomb8);
-        var bomb9 = new gameObject($bomb9);
-        var bomb10 = new gameObject($bomb10);
-        var bomb11 = new gameObject($bomb11);
-        var bomb12 = new gameObject($bomb12);
-        var bomb13 = new gameObject($bomb13);
-    }
-    
-      loadTnt(){
-        var tnt1 = new gameObject($tnt);
-        var tnt2 = new gameObject($tnt2);
-        var tnt3 = new gameObject($tnt3);
-        var tnt4 = new gameObject($tnt4);
-        var tnt5 = new gameObject($tnt5);
-    }
-    
-    
-      loadGame(){
-    
-        window.addEventListener('load', () => {
-            loadPlayer();
-            loadBalls();
-            loadBombs();
-            loadTnt();
-         
-        })
-    }
-
-
-      isCollideBall (a, b){
-    
-        var aRect = a.getBoundingClientRect();
-        var bRect = b.getBoundingClientRect();
-    
-        return !(
-            ((aRect.top + aRect.height) < (bRect.top)) ||
-            (aRect.top > (bRect.top + bRect.height)) ||
-            ((aRect.left + aRect.width) < bRect.left) ||
-            (aRect.left > (bRect.left + bRect.width))
-        )
-    
-    
-    }
-    
-      moveBall(a)
-    {
-        a.style.left = getRandomX() + 'px'
-        a.style.top = getRandomY() + 'px'
-    };
-    
-    
-    
-      checkforCollision(){
-        if(isCollideBall($playerSprite, $goodBall))
-        {
-            moveBall($goodBall);
-            
-        }else if(isCollideBall($playerSprite, $goodBall2))
-        {
-            moveBall($goodBall2);
-              
-        }else if (isCollideBall($playerSprite, $goodBall3))
-        {
-            moveBall($goodBall3);
-            
-        }else if(isCollideBall($playerSprite, $goodBall4))
-        {
-            moveBall($goodBall4);
-            
-        }else if(isCollideBall($playerSprite, $goodBall5))
-        {
-            moveBall($goodBall5);
-            
-        }else if(isCollideBall($playerSprite, $goodBall6))
-        {
-            moveBall($goodBall6);
-            
-        }else if(isCollideBall($playerSprite, $goodBall7))
-        {
-            moveBall($goodBall7);
-            
-        }else if(isCollideBall($playerSprite, $goodBall8))
-        {
-            moveBall($goodBall8)
-            
-        }else if(isCollideBall($playerSprite, $bomb))//////
-        {
-            moveBall($bomb);// replace with health -
-            
-            
-        }else if(isCollideBall($playerSprite, $bomb2))
-        {
-            moveBall($bomb2);// replace with health -
-            
-              
-        }else if (isCollideBall($playerSprite, $bomb3))
-        {
-            moveBall($bomb3);// replace with health -
-            
-            
-        }else if(isCollideBall($playerSprite, $bomb4))
-        {
-            moveBall($bomb4);// replace with health -
-            
-            
-        }else if(isCollideBall($playerSprite, $bomb5))
-        {
-            moveBall($bomb5);// replace with health -
-           
-            
-        }else if(isCollideBall($playerSprite, $bomb6))
-        {
-            moveBall($bomb6);// replace with health -
-           
-            
-        }else if(isCollideBall($playerSprite, $bomb7))
-        {
-            moveBall($bomb7);// replace with health -
-            
-            
-        }else if(isCollideBall($playerSprite, $bomb8))
-        {
-            moveBall($bomb8);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $bomb9))
-        {
-            moveBall($bomb9);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $bomb10))
-        {
-            moveBall($bomb10);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $bomb11))
-        {
-            moveBall($bomb11);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $bomb12))
-        {
-            moveBall($bomb12);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $bomb13))
-        {
-            moveBall($bomb13);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $tnt))
-        {
-            moveBall($tnt);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $tnt2))
-        {
-            moveBall($tnt2);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $tnt3))
-        {
-            moveBall($tnt3);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $tnt4))
-        {
-            moveBall($tnt4);// replace with health -
-              
-        }else if(isCollideBall($playerSprite, $tnt5))
-        {
-            moveBall($tnt5);// replace with health -
-              
-        }
-        
-    }
-    
-      moveBombs()
-    {
-        console.log('movebomb is being called');
-        $bomb.style.left = getRandomX() + 'px';
-        $bomb.style.top = getRandomY() + 'px';
-        $bomb2.style.left = getRandomX() + 'px';
-        $bomb2.style.top = getRandomY() + 'px';
-        $bomb3.style.left = getRandomX() + 'px';
-        $bomb3.style.top = getRandomY() + 'px';
-        $bomb4.style.left = getRandomX() + 'px';
-        $bomb4.style.top = getRandomY() + 'px';
-        $bomb5.style.left = getRandomX() + 'px';
-        $bomb5.style.top = getRandomY() + 'px';
-        $bomb6.style.left = getRandomX() + 'px';
-        $bomb6.style.top = getRandomY() + 'px';
-        $bomb7.style.left = getRandomX() + 'px';
-        $bomb7.style.top = getRandomY() + 'px';
-        $bomb8.style.left = getRandomX() + 'px';
-        $bomb8.style.top = getRandomY() + 'px';
-        $bomb9.style.left = getRandomX() + 'px';
-        $bomb9.style.top = getRandomY() + 'px';
-        $bomb10.style.left = getRandomX() + 'px';
-        $bomb10.style.top = getRandomY() + 'px';
-        $bomb11.style.left = getRandomX() + 'px';
-        $bomb11.style.top = getRandomY() + 'px';
-        $bomb12.style.left = getRandomX() + 'px';
-        $bomb12.style.top = getRandomY() + 'px';
-        $bomb13.style.left = getRandomX() + 'px';
-        $bomb13.style.top = getRandomY() + 'px';
-        $tnt.style.left = getRandomX() + 'px';
-        $tnt.style.top = getRandomY() + 'px';
-        $tnt2.style.left = getRandomX() + 'px';
-        $tnt2.style.top = getRandomY() + 'px';
-        $tnt3.style.left = getRandomX() + 'px';
-        $tnt3.style.top = getRandomY() + 'px';
-        $tnt4.style.left = getRandomX() + 'px';
-        $tnt4.style.top = getRandomY() + 'px';
-        $tnt5.style.left = getRandomX() + 'px';
-        $tnt5.style.top = getRandomY() + 'px';
-        
-    }
-    
-      Timer()
-    {
-        intVar = setInterval(moveBombs, 3000)
-    }
-    
-      getPlayerPos(){
-    
-        window.addEventListener('keydown', (e) => {
-            switch (e.key) { //Movement fuction detects when arrow keys down
-                case 'ArrowLeft':
-                     this.playerSpeed = 20;
-                    
-                    checkforCollision()
-                    if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) -  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) -  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) -  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                        
-                         this.playerSpeed = 0;
-                    } else { //At no borders
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) -  this.playerSpeed + 'px'
-                        
-        
-                    }
-                    break;
-        
-                case 'ArrowRight':
-                     this.playerSpeed = 20;
-                    
-                    checkforCollision()
-                    if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) +  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) +  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) +  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                         this.playerSpeed = 0;
-                        
-                    } else { //At no borders
-                        $playerSprite.style.left = parseInt($playerSprite.style.left) +  this.playerSpeed + 'px';
-                        
-                    }
-                    break;
-        
-                case 'ArrowUp':
-                     this.playerSpeed = 20;
-                    
-                    checkforCollision()
-                    if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) -  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) -  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) -  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                         this.playerSpeed = 0;
-                        
-                    } else { //At no borders
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) -  this.playerSpeed + 'px'
-                        
-                    }
-                    break;
-        
-                case 'ArrowDown':
-                     this.playerSpeed = 20;
-            
-                    checkforCollision()
-                    if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) +  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) +  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) +  this.playerSpeed + 'px'
-                        
-                    } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
-                         this.playerSpeed = 0;
-                        
-                    }else { //At no borders
-                        $playerSprite.style.top = parseInt($playerSprite.style.top) +  this.playerSpeed + 'px'
-                        
-        
-                    }
-        
-                    break;
-            }
-        }
-        )
-    
-    }
-    
-    
-      getRandomInt(int){
-        return Math.floor(Math.random() * Math.floor(int));
-    }
-    
-      getRandomX(){
-        var coordX = getRandomInt(1600) + 380;
-        ///var coordXstring = coordX.toString();
-        ///var lasttwochar = coordXstring.slice(-2);
-        ///var lasttwodigits = +(lasttwochar); 
-        //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
-            //coordX = getRandomInt(1600) + 400;
-            //var coordXstring = coordX.toString();
-            //var lasttwochar = coordXstring.slice(-2);
-            //var lasttwodigits = +(lasttwochar); 
-        //}
-        return coordX;
-    }
-    
-      getRandomY() {
-        var coordY =  getRandomInt(841) + 100;
-        ///var coordYstring = coordY.toString();
-        ///var lasttwochar = coordYstring.slice(-2);
-        ///var lasttwodigits = +(lasttwochar); 
-        //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
-            //coordY =  getRandomInt(841) + 100;
-            //var coordYstring = coordY.toString();
-            //var lasttwochar = coordYstring.slice(-2);
-            //var lasttwodigits = +(lasttwochar); 
-        //}
-        return coordY;
-        }
-    
+function gameObject(a){ //creates ball object
+    this.x = getRandomX(); + 'px' //get x coord from random int generator
+    this.y = getRandomY(); + 'px' //get y coord from random int generator
+    a.style.position = 'absolute' //create object on top of everything
+    a.style.left = this.x + 'px'; //assign a
+    a.style.top = this.y + 'px';
+    console.log(this.x + ',' + this.y)
 }
+
+function loadPlayer(){
+    $playerSprite.style.position = 'absolute';
+    $playerSprite.style.left = 1200 + "px";
+    $playerSprite.style.top = 500 + "px";
+}
+
+function loadBalls(){
+    var ball1 = new gameObject($goodBall);
+    var ball2 = new gameObject($goodBall2);
+    var ball3 = new gameObject($goodBall3);
+    var ball4 = new gameObject($goodBall4);
+    var ball5 = new gameObject($goodBall5);
+    var ball6 = new gameObject($goodBall6);
+    var ball7 = new gameObject($goodBall7);
+    var ball8 = new gameObject($goodBall8);
+}
+
+function loadBombs(){
+    var bomb1 = new gameObject($bomb);
+    var bomb2 = new gameObject($bomb2);
+    var bomb3 = new gameObject($bomb3);
+    var bomb4 = new gameObject($bomb4);
+    var bomb5 = new gameObject($bomb5);
+    var bomb6 = new gameObject($bomb6);
+    var bomb7 = new gameObject($bomb7);
+    var bomb8 = new gameObject($bomb8);
+    var bomb9 = new gameObject($bomb9);
+    var bomb10 = new gameObject($bomb10);
+    var bomb11 = new gameObject($bomb11);
+    var bomb12 = new gameObject($bomb12);
+    var bomb13 = new gameObject($bomb13);
+}
+
+function loadTnt(){
+    var tnt1 = new gameObject($tnt);
+    var tnt2 = new gameObject($tnt2);
+    var tnt3 = new gameObject($tnt3);
+    var tnt4 = new gameObject($tnt4);
+    var tnt5 = new gameObject($tnt5);
+}
+
+
+function loadGame(){
+
+    window.addEventListener('load', () => {
+        loadPlayer();
+        loadBalls();
+        loadBombs();
+        loadTnt();
+     
+    })
+}
+
+
 
 
 loadGame();
 getPlayerPos();
+
+function isCollideBall (a, b){
+    
+    var aRect = a.getBoundingClientRect();
+    var bRect = b.getBoundingClientRect();
+
+    return !(
+        ((aRect.top + aRect.height) < (bRect.top)) ||
+        (aRect.top > (bRect.top + bRect.height)) ||
+        ((aRect.left + aRect.width) < bRect.left) ||
+        (aRect.left > (bRect.left + bRect.width))
+    )
+
+
+}
+
+function moveBall(a)
+{
+    a.style.left = getRandomX() + 'px'
+    a.style.top = getRandomY() + 'px'
+};
+
+
+
+function checkforCollision(){
+    if(isCollideBall($playerSprite, $goodBall))
+    {
+        moveBall($goodBall);
+        
+    }else if(isCollideBall($playerSprite, $goodBall2))
+    {
+        moveBall($goodBall2);
+          
+    }else if (isCollideBall($playerSprite, $goodBall3))
+    {
+        moveBall($goodBall3);
+        
+    }else if(isCollideBall($playerSprite, $goodBall4))
+    {
+        moveBall($goodBall4);
+        
+    }else if(isCollideBall($playerSprite, $goodBall5))
+    {
+        moveBall($goodBall5);
+        
+    }else if(isCollideBall($playerSprite, $goodBall6))
+    {
+        moveBall($goodBall6);
+        
+    }else if(isCollideBall($playerSprite, $goodBall7))
+    {
+        moveBall($goodBall7);
+        
+    }else if(isCollideBall($playerSprite, $goodBall8))
+    {
+        moveBall($goodBall8)
+        
+    }else if(isCollideBall($playerSprite, $bomb))//////
+    {
+        moveBall($bomb);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb2))
+    {
+        moveBall($bomb2);// replace with health -
+        
+          
+    }else if (isCollideBall($playerSprite, $bomb3))
+    {
+        moveBall($bomb3);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb4))
+    {
+        moveBall($bomb4);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb5))
+    {
+        moveBall($bomb5);// replace with health -
+       
+        
+    }else if(isCollideBall($playerSprite, $bomb6))
+    {
+        moveBall($bomb6);// replace with health -
+       
+        
+    }else if(isCollideBall($playerSprite, $bomb7))
+    {
+        moveBall($bomb7);// replace with health -
+        
+        
+    }else if(isCollideBall($playerSprite, $bomb8))
+    {
+        moveBall($bomb8);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb9))
+    {
+        moveBall($bomb9);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb10))
+    {
+        moveBall($bomb10);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb11))
+    {
+        moveBall($bomb11);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb12))
+    {
+        moveBall($bomb12);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb13))
+    {
+        moveBall($bomb13);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt))
+    {
+        moveBall($tnt);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt2))
+    {
+        moveBall($tnt2);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt3))
+    {
+        moveBall($tnt3);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt4))
+    {
+        moveBall($tnt4);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $tnt5))
+    {
+        moveBall($tnt5);// replace with health -
+          
+    }
+    
+}
+
+function moveBombs()
+{
+    console.log('movebomb is being called');
+    $bomb.style.left = getRandomX() + 'px';
+    $bomb.style.top = getRandomY() + 'px';
+    $bomb2.style.left = getRandomX() + 'px';
+    $bomb2.style.top = getRandomY() + 'px';
+    $bomb3.style.left = getRandomX() + 'px';
+    $bomb3.style.top = getRandomY() + 'px';
+    $bomb4.style.left = getRandomX() + 'px';
+    $bomb4.style.top = getRandomY() + 'px';
+    $bomb5.style.left = getRandomX() + 'px';
+    $bomb5.style.top = getRandomY() + 'px';
+    $bomb6.style.left = getRandomX() + 'px';
+    $bomb6.style.top = getRandomY() + 'px';
+    $bomb7.style.left = getRandomX() + 'px';
+    $bomb7.style.top = getRandomY() + 'px';
+    $bomb8.style.left = getRandomX() + 'px';
+    $bomb8.style.top = getRandomY() + 'px';
+    $bomb9.style.left = getRandomX() + 'px';
+    $bomb9.style.top = getRandomY() + 'px';
+    $bomb10.style.left = getRandomX() + 'px';
+    $bomb10.style.top = getRandomY() + 'px';
+    $bomb11.style.left = getRandomX() + 'px';
+    $bomb11.style.top = getRandomY() + 'px';
+    $bomb12.style.left = getRandomX() + 'px';
+    $bomb12.style.top = getRandomY() + 'px';
+    $bomb13.style.left = getRandomX() + 'px';
+    $bomb13.style.top = getRandomY() + 'px';
+    $tnt.style.left = getRandomX() + 'px';
+    $tnt.style.top = getRandomY() + 'px';
+    $tnt2.style.left = getRandomX() + 'px';
+    $tnt2.style.top = getRandomY() + 'px';
+    $tnt3.style.left = getRandomX() + 'px';
+    $tnt3.style.top = getRandomY() + 'px';
+    $tnt4.style.left = getRandomX() + 'px';
+    $tnt4.style.top = getRandomY() + 'px';
+    $tnt5.style.left = getRandomX() + 'px';
+    $tnt5.style.top = getRandomY() + 'px';
+    
+}
+
+function Timer()
+{
+    intVar = setInterval(moveBombs, 3000)
+}
+
+function getPlayerPos(){
+
+    window.addEventListener('keydown', (e) => {
+        switch (e.key) { //Movement fuction detects when arrow keys down
+            case 'ArrowLeft':
+                moveBy = 20;
+                
+                checkforCollision()
+                if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    
+                    moveBy = 0;
+                } else { //At no borders
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) - moveBy + 'px'
+                    
+    
+                }
+                break;
+    
+            case 'ArrowRight':
+                moveBy = 20;
+                
+                checkforCollision()
+                if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    moveBy = 0;
+                    
+                } else { //At no borders
+                    $playerSprite.style.left = parseInt($playerSprite.style.left) + moveBy + 'px';
+                    
+                }
+                break;
+    
+            case 'ArrowUp':
+                moveBy = 20;
+                
+                checkforCollision()
+                if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    moveBy = 0;
+                    
+                } else { //At no borders
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) - moveBy + 'px'
+                    
+                }
+                break;
+    
+            case 'ArrowDown':
+                moveBy = 20;
+        
+                checkforCollision()
+                if ($playerSprite.style.left === 380 + 'px') { //if character at LEFT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 60 + 'px') { //if character at TOP BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.left === 2080 + 'px') { //if character at RIGHT BORDER
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+                } else if ($playerSprite.style.top === 1000 + 'px') { //if character at BOTTOM BORDER
+                    moveBy = 0;
+                    
+                }else { //At no borders
+                    $playerSprite.style.top = parseInt($playerSprite.style.top) + moveBy + 'px'
+                    
+    
+                }
+    
+                break;
+        }
+    }
+    )
+
+}
+
+
+function getRandomInt(int){
+    return Math.floor(Math.random() * Math.floor(int));
+}
+
+function getRandomX(){
+    var coordX = getRandomInt(1600) + 380;
+    ///var coordXstring = coordX.toString();
+    ///var lasttwochar = coordXstring.slice(-2);
+    ///var lasttwodigits = +(lasttwochar); 
+    //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
+        //coordX = getRandomInt(1600) + 400;
+        //var coordXstring = coordX.toString();
+        //var lasttwochar = coordXstring.slice(-2);
+        //var lasttwodigits = +(lasttwochar); 
+    //}
+    return coordX;
+}
+
+function getRandomY() {
+    var coordY =  getRandomInt(841) + 100;
+    ///var coordYstring = coordY.toString();
+    ///var lasttwochar = coordYstring.slice(-2);
+    ///var lasttwodigits = +(lasttwochar); 
+    //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
+        //coordY =  getRandomInt(841) + 100;
+        //var coordYstring = coordY.toString();
+        //var lasttwochar = coordYstring.slice(-2);
+        //var lasttwodigits = +(lasttwochar); 
+    //}
+    return coordY;
+    }
