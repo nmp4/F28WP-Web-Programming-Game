@@ -1,85 +1,97 @@
-const $startButton = document.getElementById("startButton"); // get startbutton from DOM
-const $background = document.getElementById('background'); // get background from DOM
-const $playerNameInput = document.getElementById('playerNameInput'); // get 
-const $playerNameButton = document.getElementById('playerNameButton');
-const $playerSprite = document.getElementById('playerSprite');
-const $goodBall = document.querySelector('#goodBall');
-const $goodBall2 = document.querySelector('#goodBall2');
-const $goodBall3 = document.querySelector('#goodBall3');
-const $goodBall4 = document.querySelector('#goodBall4');
-const $goodBall5 = document.querySelector('#goodBall5');
-const $goodBall6 = document.querySelector('#goodBall6');
-const $goodBall7 = document.querySelector('#goodBall7');
-const $goodBall8 = document.querySelector('#goodBall8');
-const $bomb = document.querySelector('#bomb')
-const $bomb2 = document.querySelector('#bomb2')
-const $bomb3 = document.querySelector('#bomb3')
-const $bomb4 = document.querySelector('#bomb4')
-const $bomb5 = document.querySelector('#bomb5')
-const $bomb6 = document.querySelector('#bomb6')
-const $bomb7 = document.querySelector('#bomb7')
-const $bomb8 = document.querySelector('#bomb8')
-const $playerName = document.getElementById('playerNameInput').value;
-let counter = 0;
-var ball = []
-let moveBy = 20;
-var intVar;
+const $startButton = document.getElementById("startButton"); // DOM call for startbutton object
+const $background = document.getElementById('background'); // DOM call for background object
+const $playerNameInput = document.getElementById('playerNameInput'); // DOM call for name textbox object
+const $playerNameButton = document.getElementById('playerNameButton'); // DOM call for enter text button object
+const $playerSprite = document.getElementById('playerSprite'); // DOM call for player character object
+const $goodBall = document.querySelector('#goodBall'); // DOM call for ball 1 object
+const $goodBall2 = document.querySelector('#goodBall2'); // DOM call for ball 2 object
+const $goodBall3 = document.querySelector('#goodBall3'); // DOM call for ball 3 object
+const $goodBall4 = document.querySelector('#goodBall4'); // DOM call for ball 4 object
+const $goodBall5 = document.querySelector('#goodBall5'); // DOM call for ball 5 object
+const $goodBall6 = document.querySelector('#goodBall6'); // DOM call for ball 6 object
+const $goodBall7 = document.querySelector('#goodBall7'); // DOM call for ball 7 object
+const $goodBall8 = document.querySelector('#goodBall8'); // DOM call for ball 8 object
+const $bomb = document.querySelector('#bomb') // DOM call for bomb 1 object
+const $bomb2 = document.querySelector('#bomb2') // DOM call for bomb 2 object
+const $bomb3 = document.querySelector('#bomb3') // DOM call for bomb 3 object
+const $bomb4 = document.querySelector('#bomb4') // DOM call for bomb 4 object
+const $bomb5 = document.querySelector('#bomb5') // DOM call for bomb 5 object
+const $bomb6 = document.querySelector('#bomb6') // DOM call for bomb 6 object
+const $bomb7 = document.querySelector('#bomb7') // DOM call for bomb 7 object
+const $bomb8 = document.querySelector('#bomb8') // DOM call for bomb 8 object
+const $bomb9 = document.querySelector('#bomb9') // DOM call for bomb 8 object
+const $bomb10 = document.querySelector('#bomb10') // DOM call for bomb 8 object
+const $bomb11 = document.querySelector('#bomb11') // DOM call for bomb 8 object
+const $bomb12 = document.querySelector('#bomb12') // DOM call for bomb 8 object
+const $bomb13 = document.querySelector('#bomb13') // DOM call for bomb 8 object
+const $playerName = document.getElementById('playerNameInput').value; //DOM call for player name value
+
+let moveBy = 20; //player speed (in pixels)
+var intVar; // variable to later store set interval
 
 
 
-$playerSprite.style.display = 'none';
-$goodBall.style.display = 'none';
-$goodBall2.style.display = 'none';
-$goodBall3.style.display = 'none';
-$goodBall4.style.display = 'none';
-$goodBall5.style.display = 'none';
-$goodBall6.style.display = 'none';
-$goodBall7.style.display = 'none';
-$goodBall8.style.display = 'none';
-$bomb.style.display = 'none';
-$bomb2.style.display = 'none';
-$bomb3.style.display = 'none';
-$bomb4.style.display = 'none';
-$bomb5.style.display = 'none';
-$bomb6.style.display = 'none';
-$bomb7.style.display = 'none';
-$bomb8.style.display = 'none';
+$playerSprite.style.display = 'none'; //hide player sprite
+$goodBall.style.display = 'none'; //hide ball sprite
+$goodBall2.style.display = 'none';// *     *     *
+$goodBall3.style.display = 'none';// *     *     *
+$goodBall4.style.display = 'none';// *     *     *
+$goodBall5.style.display = 'none';// *     *     *
+$goodBall6.style.display = 'none';// *     *     *
+$goodBall7.style.display = 'none';// *     *     *
+$goodBall8.style.display = 'none';// *     *     *
+$bomb.style.display = 'none'; // hide bomb sprite
+$bomb2.style.display = 'none';//  *    *      *
+$bomb3.style.display = 'none';//  *    *      *
+$bomb4.style.display = 'none';//  *    *      *
+$bomb5.style.display = 'none';//  *    *      *
+$bomb6.style.display = 'none';//  *    *      *
+$bomb7.style.display = 'none';//  *    *      *
+$bomb8.style.display = 'none';//  *    *      *
+$bomb9.style.display = 'none';//  *    *      *
+$bomb10.style.display = 'none';//  *    *      *
+$bomb11.style.display = 'none';//  *    *      *
+$bomb12.style.display = 'none';//  *    *      *
+$bomb13.style.display = 'none';//  *    *      *
 
 
 
-$startButton.onclick = () => {
-    $startButton.style.display = 'none';
-    $playerNameInput.style.display = 'none';
-    $playerNameButton.style.display = 'none';
-    $playerSprite.style.display = 'inline-block';
-    $goodBall.style.display = 'inline-block';
-    $goodBall2.style.display = 'inline-block';
-    $goodBall3.style.display = 'inline-block';
-    $goodBall4.style.display = 'inline-block';
-    $goodBall5.style.display = 'inline-block';
-    $goodBall6.style.display = 'inline-block';
-    $goodBall7.style.display = 'inline-block';
-    $goodBall8.style.display = 'inline-block';
-    $bomb.style.display = 'inline-block';
-    $bomb2.style.display = 'inline-block';
-    $bomb3.style.display = 'inline-block';
-    $bomb4.style.display = 'inline-block';
-    $bomb5.style.display = 'inline-block';
-    $bomb6.style.display = 'inline-block';
-    $bomb7.style.display = 'inline-block';
-    $bomb8.style.display = 'inline-block';
-    Timer();
-    
-    
-    $background.src = "Img/Backgrounds/new background 1920x1080 v1.png";
+
+$startButton.onclick = () => { //define clicking the start button as function
+    $startButton.style.display = 'none'; // hide start button 
+    $playerNameInput.style.display = 'none'; //hide text input 
+    $playerNameButton.style.display = 'none'; //hide text input button
+    $playerSprite.style.display = 'inline-block'; //show player sprite
+    $goodBall.style.display = 'inline-block'; // show ball sprite
+    $goodBall2.style.display = 'inline-block'; //  *   *      *
+    $goodBall3.style.display = 'inline-block'; //  *   *      *
+    $goodBall4.style.display = 'inline-block'; //  *   *      *
+    $goodBall5.style.display = 'inline-block'; //  *   *      *
+    $goodBall6.style.display = 'inline-block'; //  *   *      *
+    $goodBall7.style.display = 'inline-block'; //  *   *      *
+    $goodBall8.style.display = 'inline-block'; //  *   *      *
+    $bomb.style.display = 'inline-block'; // show bomb sprite
+    $bomb2.style.display = 'inline-block'; //  *    *     *
+    $bomb3.style.display = 'inline-block'; //  *    *     *
+    $bomb4.style.display = 'inline-block'; //  *    *     *
+    $bomb5.style.display = 'inline-block'; //  *    *     *
+    $bomb6.style.display = 'inline-block'; //  *    *     *
+    $bomb7.style.display = 'inline-block'; //  *    *     *
+    $bomb8.style.display = 'inline-block'; //  *    *     *
+    $bomb9.style.display = 'inline-block'; //  *    *     *
+    $bomb10.style.display = 'inline-block'; //  *    *     *
+    $bomb11.style.display = 'inline-block'; //  *    *     *
+    $bomb12.style.display = 'inline-block'; //  *    *     *
+    $bomb13.style.display = 'inline-block'; //  *    *     *
+     
+    Timer(); //call timer function 
+    $background.src = "Img/Backgrounds/new background 1920x1080 v1.png"; //change background image to in-game background
 
 }
 
-$playerNameButton.onclick = () => {
-    var $playerName = document.getElementById("playerNameInput").value;
-    $playerNameInput.style.display = 'none';
-    $playerNameButton.style.display = 'none';
-    return $playerName;
+$playerNameButton.onclick = () => { //defiine clicking the enter name button as function
+    $playerNameInput.style.display = 'none'; //hide text input
+    $playerNameButton.style.display = 'none'; //hide text input button
 };
 
 
@@ -121,11 +133,29 @@ window.addEventListener('load', () => {
     var bomb6 = new Bomb($bomb6);
     var bomb7 = new Bomb($bomb7);
     var bomb8 = new Bomb($bomb8);
+    var bomb9 = new Bomb($bomb9);
+    var bomb10 = new Bomb($bomb10);
+    var bomb11 = new Bomb($bomb11);
+    var bomb12 = new Bomb($bomb12);
+    var bomb13 = new Bomb($bomb13);
+    
     
 
     
      
 })
+
+function getPlayerLeft()
+{
+    var x = $playerSprite.style.left
+    return x
+}
+
+function getPlayerTop()
+{
+    var y = $playerSprite.style.top
+}
+
 
 function isCollideBall (a, b){
     
@@ -222,6 +252,26 @@ function checkforCollision(){
     {
         moveBall($bomb8);// replace with health -
           
+    }else if(isCollideBall($playerSprite, $bomb9))
+    {
+        moveBall($bomb9);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb10))
+    {
+        moveBall($bomb10);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb11))
+    {
+        moveBall($bomb11);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb12))
+    {
+        moveBall($bomb12);// replace with health -
+          
+    }else if(isCollideBall($playerSprite, $bomb13))
+    {
+        moveBall($bomb13);// replace with health -
+          
     }
     
 }
@@ -245,6 +295,17 @@ function moveBombs()
     $bomb7.style.top = getRandomY() + 'px';
     $bomb8.style.left = getRandomX() + 'px';
     $bomb8.style.top = getRandomY() + 'px';
+    $bomb9.style.left = getRandomX() + 'px';
+    $bomb9.style.top = getRandomY() + 'px';
+    $bomb10.style.left = getRandomX() + 'px';
+    $bomb10.style.top = getRandomY() + 'px';
+    $bomb11.style.left = getRandomX() + 'px';
+    $bomb11.style.top = getRandomY() + 'px';
+    $bomb12.style.left = getRandomX() + 'px';
+    $bomb12.style.top = getRandomY() + 'px';
+    $bomb13.style.left = getRandomX() + 'px';
+    $bomb13.style.top = getRandomY() + 'px';
+    
 }
 
 function Timer()
@@ -355,28 +416,28 @@ function getRandomInt(int){
 
 function getRandomX(){
     var coordX = getRandomInt(1600) + 380;
-    var coordXstring = coordX.toString();
-    var lasttwochar = coordXstring.slice(-2);
-    var lasttwodigits = +(lasttwochar); 
-    while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
-        coordX = getRandomInt(1600) + 400;
-        var coordXstring = coordX.toString();
-        var lasttwochar = coordXstring.slice(-2);
-        var lasttwodigits = +(lasttwochar); 
-    }
+    ///var coordXstring = coordX.toString();
+    ///var lasttwochar = coordXstring.slice(-2);
+    ///var lasttwodigits = +(lasttwochar); 
+    //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
+        //coordX = getRandomInt(1600) + 400;
+        //var coordXstring = coordX.toString();
+        //var lasttwochar = coordXstring.slice(-2);
+        //var lasttwodigits = +(lasttwochar); 
+    //}
     return coordX;
 }
 
 function getRandomY() {
     var coordY =  getRandomInt(841) + 100;
-    var coordYstring = coordY.toString();
-    var lasttwochar = coordYstring.slice(-2);
-    var lasttwodigits = +(lasttwochar); 
-    while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
-        coordY =  getRandomInt(841) + 100;
-        var coordYstring = coordY.toString();
-        var lasttwochar = coordYstring.slice(-2);
-        var lasttwodigits = +(lasttwochar); 
-    }
+    ///var coordYstring = coordY.toString();
+    ///var lasttwochar = coordYstring.slice(-2);
+    ///var lasttwodigits = +(lasttwochar); 
+    //while (!(lasttwodigits % 5 === 0 && lasttwodigits % 4 === 0)){
+        //coordY =  getRandomInt(841) + 100;
+        //var coordYstring = coordY.toString();
+        //var lasttwochar = coordYstring.slice(-2);
+        //var lasttwodigits = +(lasttwochar); 
+    //}
     return coordY;
     }
