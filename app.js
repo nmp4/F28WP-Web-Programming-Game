@@ -13,4 +13,3 @@ app.use("/Client", express.static(__dirname + "/Client"));
 
 serv.listen(port);
 
-console.log("Server Started");
