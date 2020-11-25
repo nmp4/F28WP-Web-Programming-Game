@@ -1,6 +1,6 @@
-let express = require("express");
-let app = express();
-let serv = require("http").Server(app);
+const express = require("express");
+const app = express();
+const serv = require("http").Server(app);
 const port = process.env.PORT || 80;
 let SOCKETLIST = {};
 let PLAYERLIST = {};
