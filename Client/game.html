@@ -4,7 +4,7 @@
 
 
     <style>
-        #healthpack, #tnt, #tnt2, #tnt3, #tnt4, #tnt5, #bomb, #bomb2, #bomb3, #bomb4, #bomb5, #bomb6, #bomb7, #bomb8, #bomb9, #bomb10, #bomb11, #bomb12, #bomb13 #goodBall, #goodBall2, #goodBall3, #goodBall4, #goodBall5, #goodBall6, #goodBall7, #goodBall8 {
+        #healthpack, #tnt, #tnt2, #tnt3, #tnt4, #tnt5, #bomb, #bomb2, #bomb3, #bomb4, #bomb5, #bomb6, #bomb7, #bomb8, #bomb9, #bomb10, #bomb11, #bomb12, #bomb13, #football, #football2, #football3, #football4, #football5, #football6, #football7, #football8 {
             z-index: 2;
         }
 
@@ -27,6 +27,17 @@
             font-family:'Comic Sans MS';
             font-size: 40pt;
             margin-left: 400px;
+            position: absolute;
+            
+        }
+
+        h3{
+            
+            margin-top: 1095px;
+            color:white;
+            font-family:'Comic Sans MS';
+            font-size: 40pt;
+            margin-left: 1600px;
             position: absolute;
             
         }
@@ -124,14 +135,14 @@
     <object data="Img\Sprites\Spirtes\Pink Man\walk-to-the-left.png" id="pinkSprite"></object>
     <object data="Img\Sprites\Spirtes\Red Man\walk-to-the-left.png" id="redSprite"></object>
     <object data="Img\Sprites\Spirtes\Black Man\black left.gif" id="playerSprite"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall2"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall3"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall4"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall5"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall6"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall7"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall8"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football2"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football3"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football4"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football5"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football6"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football7"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football8"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb2"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb3"></object>
@@ -152,6 +163,7 @@
     <object data="Img\Backgrounds\Tnt.png" id="tnt5"></object>
     <object data="Img\Backgrounds\health pack.png" id="healthpack"></object>
     <h2 id = 'playername'></h2>
+    <h3 id = 'score'></h3>
     <div class="healthHeading">
         <h1>Health</h1>
         <div id="health"></div>
@@ -164,10 +176,5 @@
     <script src="js\game.js"></script>
 </body>
 <script src="js\game.js"></script>
-<script>
-    let socket = io();
-    socket.on("serverMsg", function(data){
-        console.log(data.msg);
-    });
-</script>
 </html>
+
