@@ -2,12 +2,11 @@
   "name": "f28wp-web-programming-game",
   "version": "1.0.0",
   "description": "[Natasha Pregetter] (https://github.com/nmp4)",
-  "main": "game.html",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
-
   },
   "repository": {
     "type": "git",
@@ -21,9 +20,11 @@
   "homepage": "https://github.com/nmp4/F28WP-Web-Programming-Game#readme",
   "dependencies": {
     "ajax": "0.0.4",
+    "browserify": "^17.0.0",
     "express": "^4.17.1",
     "json": "^10.0.0",
     "socket.io": "^3.0.3",
     "uniq": "^1.0.1"
-  }
+  },
+  "devDependencies": {
 }
