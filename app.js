@@ -9,7 +9,7 @@ app.get("/", function(req, res) {
     	res.sendFile(__dirname + "/Client/game.html");
 });
 
-app.use("/Client", express.static(__dirname + "/Client"));
+app.use("/", express.static(__dirname + "/Client"));
 
 serv.listen(port);
 
@@ -27,7 +27,6 @@ let Player = function(id){
 
 const io = require("socket.io")(serv, {});
 
-let SOCKETLIST = {};
 io.sockets.on("connection", function(socket){
     socket.id = Math.random();
 
