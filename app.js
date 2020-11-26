@@ -30,7 +30,7 @@ const io = require("socket.io")(serv, {});
 io.on("connection", function(socket){
     socket.id = Math.random();
     console.log("A player has connected.");
-    
+
     let player = Player(socket.id)
     SOCKETLIST[socket.id] = socket;
     PLAYERLIST[socket.id] = player;
@@ -42,21 +42,3 @@ io.on("connection", function(socket){
     });
 });
 
-
-setInterval(function(){
-    let pack = [];
-    for(let i in PLAYERLIST){
-        let player = PLAYERLIST[i];
-        pack.push({
-            x:socket.x,
-            y:socket.y,
-            number:socket.number
-        });
-    }
-
-    for(let i in SOCKETLIST){
-        let socket = SOCKETLIST[i];
-        socket.emit("newPositions", pack);
-    };
-
-},1000/30);
