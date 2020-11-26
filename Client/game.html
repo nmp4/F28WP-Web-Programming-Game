@@ -2,47 +2,50 @@
 <html>
 <head>
 
-
+   
     <style>
+        /* Styling for in-game object */
         #healthpack, #tnt, #tnt2, #tnt3, #tnt4, #tnt5, #bomb, #bomb2, #bomb3, #bomb4, #bomb5, #bomb6, #bomb7, #bomb8, #bomb9, #bomb10, #bomb11, #bomb12, #bomb13, #football, #football2, #football3, #football4, #football5, #football6, #football7, #football8 {
             z-index: 2;
         }
 
-        html {background-color: #222222}
 
+        /* Background */
+        html {
+            background-color: #222222
+        }
+
+        /* Health Bar */
         .healthHeading {
-            text-align:center;
+            text-align: center;
             margin-top: 1025px;
             margin-left: 1250px;
-            color:white;
-            font-family:'Comic Sans MS';
+            color: white;
+            font-family: 'Comic Sans MS';
             font-size: 28pt;
             position: absolute;
         }
-
+        /* Player Name */
         h2 {
-            
             margin-top: 1095px;
-            color:white;
-            font-family:'Comic Sans MS';
+            color: white;
+            font-family: 'Comic Sans MS';
             font-size: 40pt;
             margin-left: 400px;
             position: absolute;
-            
         }
 
-        h3{
-            
+        /* Score */
+        h3 {
             margin-top: 1095px;
-            color:white;
-            font-family:'Comic Sans MS';
+            color: white;
+            font-family: 'Comic Sans MS';
             font-size: 40pt;
             margin-left: 1600px;
             position: absolute;
-            
         }
 
-
+        /* Sets Background Styling */
         #background {
             position: absolute;
             top: 10px;
@@ -50,6 +53,7 @@
             z-index: 1;
         }
 
+        /* Styles The Player Input */
         #playerNameInput {
             position: absolute;
             top: 450px;
@@ -59,7 +63,8 @@
             width: 300px;
             font-size: 20pt;
         }
-
+        
+        /* Styles The Start Game Button */
         #startButton {
             height: 0px;
             width: 0px;
@@ -68,8 +73,9 @@
             left: 985px;
             z-index: 2;
         }
-        #toMenuButton
-        {
+
+        /* Styles Back To Menu Button */
+        #toMenuButton {
             left: 985px;
             top: 700px;
             position: absolute;
@@ -79,6 +85,7 @@
             width: 0px;
         }
 
+        /* Button To Submit Player Name */
         #playerNameButton {
             height: 0px;
             width: 0px;
@@ -88,18 +95,22 @@
             z-index: 2;
         }
 
-       #instructions{
-           text-align:center;
-           color:white;
-       }
+        /* Instructions For Player */
+        #instructions {
+            text-align: center;
+            color: white;
+        }
+
+        /* Styles The Player Sprite */
         #playerSprite {
             position: absolute;
             top: 540px;
             left: 1100px;
             z-index: 2;
         }
-        
-        #gameOverScreen{
+
+        /* Styles Game End Game Screen */
+        #gameOverScreen {
             position: absolute;
             top: 10px;
             left: 300px;
@@ -107,28 +118,38 @@
             display: none;
         }
 
-        #blueSprite, #blackSprite, #pinkSprite, #greenSprite, #redSprite{
-        display: none;
+        /* Sets Players Invisble Before Game Starts */
+        #blueSprite, #blackSprite, #pinkSprite, #greenSprite, #redSprite {
+            display: none;
         }
 
     </style>
     <title>Ball Mania</title>
 </head>
 <body>
-
-    <div class="circle"></div>
+    <! -- Input For Player Name -->
     <input type="text" id="playerNameInput" value="">
+
+    <! -- Background Image -->
     <img src="Img\MainMenu\Menu Page1.png" id="background">
+
+    <! -- Main Menu Buttons -->
     <button id="startButton">
         <img src="Img\MainMenu\button(play).png">
     </button>
     <button id="playerNameButton">
         <img src="Img\MainMenu\buttonenter.png">
     </button>
-    <button id = "toMenuButton">
-        <img src = "Img\MainMenu\buttonenter.png">
+
+    <! -- Button To Return To Menu -->
+    <button id="toMenuButton">
+        <img src="Img\MainMenu\buttonenter.png">
     </button>
-    <object data = "Img\Backgrounds\game over screen.png" id = "gameOverScreen"></object>
+
+    <! -- Game Over Image -->
+    <object data="Img\Backgrounds\game over screen.png" id="gameOverScreen"></object>
+
+    <! -- In Game Sprites -->
     <object data="Img\Sprites\Spirtes\Blue Man\walk-to-the-left.png" id="blueSprite"></object>
     <object data="Img\Sprites\Spirtes\Black Man\walk-to-the-left.png" id="blackSprite"></object>
     <object data="Img\Sprites\Spirtes\Green Man\walk-to-the-left.png" id="greenSprite"></object>
@@ -162,17 +183,27 @@
     <object data="Img\Backgrounds\Tnt.png" id="tnt4"></object>
     <object data="Img\Backgrounds\Tnt.png" id="tnt5"></object>
     <object data="Img\Backgrounds\health pack.png" id="healthpack"></object>
-    <h2 id = 'playername'></h2>
-    <h3 id = 'score'></h3>
+   
+    <! -- Player Name -->
+    <h2 id='playername'></h2>
+    
+    <! -- Score -->
+    <h3 id='score'></h3>
+
+    <! -- Player Health -->
     <div class="healthHeading">
         <h1>Health</h1>
         <div id="health"></div>
     </div>
+
+    <! -- Player Instructions -->
     <div id="instructions">
         Use Arrow Keys To Move
         <br />
         <p>Collect The Balls, Avoid The Explosives!</p>
     </div>
+
+    <! -- Calling Javascript -->
     <script src="js\game.js"></script>^
     <script src="/socket.io/socket.io.js"></script>
     <script>
