@@ -2,6 +2,8 @@ const express = require("express"); // call in express functionality
 const app = express(); //create an express object called app for communication
 const serv = require("http").Server(app); //server object
 const port = process.env.PORT || 80; //server port
+
+
 //const playerPos = require("./Client/js/game.js");
 
 //var jsdom = require("jsdom");
@@ -38,6 +40,8 @@ let Player = function(id){//function of player object with different id and numb
         pressingDown: false,
         moveBy: 20 */
     }
+
+    return playerInst;
 /*
 **This was going to be player movement etc but game was done b4 server so all the calculations didnt work
 **due to the DOM objects and the inability of node to interact with the document object.
@@ -62,8 +66,6 @@ let Player = function(id){//function of player object with different id and numb
         }
     }
     */
-
-    return playerInst;
 }
 
 
@@ -82,9 +84,10 @@ io.on("connection", function(socket){ //checks for player connections to the ser
         delete SOCKETLIST[socket.id];//deletes socket from socketlist
         delete PLAYERLIST[socket.id];//deleted player from playerlist
         console.log("A player has disconnected.");
-    });
+    });S
 });
 
+/*
 setInterval(function(){//this would update the player data every frame, where the game goes at 30FPS
     let pack = [];//pack of data to be sent off in the emit statements
     for(let i in PLAYERLIST){
@@ -106,3 +109,5 @@ setInterval(function(){//this would update the player data every frame, where th
     };
 
 },1000/30);// for every frame in 30FPS
+
+*/
