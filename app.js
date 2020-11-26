@@ -7,7 +7,7 @@ const serv = require("http").Server(app);
 const port = process.env.PORT || 80; //server port
 
 
-const playerPos = require("./Client/js/game.js");
+//const playerPos = require("./Client/js/game.js");
 
 //var jsdom = require("jsdom");
 //var JSDOM = jsdom.JSDOM;
