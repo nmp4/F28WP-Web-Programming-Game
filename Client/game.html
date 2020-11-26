@@ -4,9 +4,44 @@
 
 
     <style>
-        #bomb, #bomb2, #bomb3, #bomb4, #bomb5, #bomb6, #bomb7, #bomb8, #bomb9, #bomb10, #bomb11, #bomb12, #bomb13 #goodBall, #goodBall2, #goodBall3, #goodBall4, #goodBall5, #goodBall6, #goodBall7, #goodBall8 {
+        #healthpack, #tnt, #tnt2, #tnt3, #tnt4, #tnt5, #bomb, #bomb2, #bomb3, #bomb4, #bomb5, #bomb6, #bomb7, #bomb8, #bomb9, #bomb10, #bomb11, #bomb12, #bomb13, #football, #football2, #football3, #football4, #football5, #football6, #football7, #football8 {
             z-index: 2;
         }
+
+        html {background-color: #222222}
+
+        .healthHeading {
+            text-align:center;
+            margin-top: 1025px;
+            margin-left: 1250px;
+            color:white;
+            font-family:'Comic Sans MS';
+            font-size: 28pt;
+            position: absolute;
+        }
+
+        h2 {
+            
+            margin-top: 1095px;
+            color:white;
+            font-family:'Comic Sans MS';
+            font-size: 40pt;
+            margin-left: 400px;
+            position: absolute;
+            
+        }
+
+        h3{
+            
+            margin-top: 1095px;
+            color:white;
+            font-family:'Comic Sans MS';
+            font-size: 40pt;
+            margin-left: 1600px;
+            position: absolute;
+            
+        }
+
 
         #background {
             position: absolute;
@@ -18,10 +53,11 @@
         #playerNameInput {
             position: absolute;
             top: 450px;
-            left: 1095px;
+            left: 1082px;
             z-index: 2;
             height: 75px;
             width: 300px;
+            font-size: 20pt;
         }
 
         #startButton {
@@ -32,23 +68,47 @@
             left: 985px;
             z-index: 2;
         }
+        #toMenuButton
+        {
+            left: 985px;
+            top: 700px;
+            position: absolute;
+            z-index: 4;
+            display: none;
+            height: 0px;
+            width: 0px;
+        }
 
         #playerNameButton {
             height: 0px;
             width: 0px;
             position: absolute;
-            top: 540px;
-            left: 1100px;
+            top: 243px;
+            left: 1350px;
             z-index: 2;
         }
 
-       
-
+       #instructions{
+           text-align:center;
+           color:white;
+       }
         #playerSprite {
             position: absolute;
             top: 540px;
             left: 1100px;
             z-index: 2;
+        }
+        
+        #gameOverScreen{
+            position: absolute;
+            top: 10px;
+            left: 300px;
+            z-index: 3;
+            display: none;
+        }
+
+        #blueSprite, #blackSprite, #pinkSprite, #greenSprite, #redSprite{
+        display: none;
         }
 
     </style>
@@ -65,20 +125,24 @@
     <button id="playerNameButton">
         <img src="Img\MainMenu\buttonenter.png">
     </button>
+    <button id = "toMenuButton">
+        <img src = "Img\MainMenu\buttonenter.png">
+    </button>
+    <object data = "Img\Backgrounds\game over screen.png" id = "gameOverScreen"></object>
     <object data="Img\Sprites\Spirtes\Blue Man\walk-to-the-left.png" id="blueSprite"></object>
     <object data="Img\Sprites\Spirtes\Black Man\walk-to-the-left.png" id="blackSprite"></object>
     <object data="Img\Sprites\Spirtes\Green Man\walk-to-the-left.png" id="greenSprite"></object>
     <object data="Img\Sprites\Spirtes\Pink Man\walk-to-the-left.png" id="pinkSprite"></object>
     <object data="Img\Sprites\Spirtes\Red Man\walk-to-the-left.png" id="redSprite"></object>
-    <object data="Img\Sprites\Spirtes\White Man\walk-to-the-left.png" id="playerSprite"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall2"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall3"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall4"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall5"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall6"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall7"></object>
-    <object data="Img\Backgrounds\ball x3.png" id="goodBall8"></object>
+    <object data="Img\Sprites\Spirtes\Black Man\black left.gif" id="playerSprite"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football2"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football3"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football4"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football5"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football6"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football7"></object>
+    <object data="Img\Backgrounds\ball x3.png" id="football8"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb2"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb3"></object>
@@ -92,7 +156,29 @@
     <object data="Img\Backgrounds\bomb.png" id="bomb11"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb12"></object>
     <object data="Img\Backgrounds\bomb.png" id="bomb13"></object>
-    <script src="js\placeholder.js"></script>
+    <object data="Img\Backgrounds\Tnt.png" id="tnt"></object>
+    <object data="Img\Backgrounds\Tnt.png" id="tnt2"></object>
+    <object data="Img\Backgrounds\Tnt.png" id="tnt3"></object>
+    <object data="Img\Backgrounds\Tnt.png" id="tnt4"></object>
+    <object data="Img\Backgrounds\Tnt.png" id="tnt5"></object>
+    <object data="Img\Backgrounds\health pack.png" id="healthpack"></object>
+    <h2 id = 'playername'></h2>
+    <h3 id = 'score'></h3>
+    <div class="healthHeading">
+        <h1>Health</h1>
+        <div id="health"></div>
+    </div>
+    <div id="instructions">
+        Use Arrow Keys To Move
+        <br />
+        <p>Collect The Balls, Avoid The Explosives!</p>
+    </div>
+    <script src="js\game.js"></script>^
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+    </script>
 </body>
-<script src="js\placeholder.js"></script>
+<script src="js\game.js"></script>
 </html>
+
