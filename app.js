@@ -29,7 +29,7 @@ const io = require("socket.io")(serv, {});
 
 io.sockets.on("connection", function(socket){
     socket.id = Math.random();
-
+    console.log("A player has connected.");
     let player = Player(socket.id)
     SOCKETLIST[socket.id] = socket;
     PLAYERLIST[socket.id] = player;
