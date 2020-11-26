@@ -2,9 +2,16 @@ const express = require("express");
 const app = express();
 const serv = require("http").Server(app);
 const port = process.env.PORT || 80;
-const playerPos = require("./Client/js/game.js");
+//const playerPos = require("./Client/js/game.js");
 
+//var jsdom = require("jsdom");
+//var JSDOM = jsdom.JSDOM;
 
+//dom = JSDOM("./Client/game.js");
+
+//const document = dom.document;
+
+//const $playerSprite = new JSDOM(document.getElementById('playerSprite'));
 
 let SOCKETLIST = {};
 let PLAYERLIST = {};
@@ -18,14 +25,37 @@ app.use("/", express.static(__dirname + "/Client"));
 serv.listen(port);
 
 console.log("Server Started");
-
 let Player = function(id){
     let playerInst = {
-        x:1200 + "px",
-        y:500 + "px",
+       // x:1200 + "px",
+       // y:500 + "px",
         id:id,
-        number: Math.floor(Math.random() * 10000)
+        number: Math.floor(Math.random() * 10000),
+        /*pressingRight: false,
+        pressingLeft: false,
+        pressingUp: false,
+        pressingDown: false,
+        moveBy: 20 */
     }
+/*
+    playerInst.updatePosition = function(){
+        if(playerInst.pressingRight){
+            coord = parseInt(playerInst.x) + playerInst.moveBy;
+            playerInst.x = coord + "px" ;
+        }
+        else if(playerInst.pressingLeft){
+            coord = parseInt(playerInst.x) - playerInst.moveBy;
+            playerInst.x = coord + "px";
+        }
+        else if(playerInst.pressingUp){
+            coord = parseInt(playerInst.y) - playerInst.moveBy;
+            playerInst.y = coord + "px";
+        }
+        else if(playerInst.pressingDown){
+            coord = parseInt(playerInst.y) + playerInst.moveBy;
+            playerInst.y = coord + "px";
+        }
+    }*/
     return playerInst;
 }
 
@@ -52,19 +82,20 @@ setInterval(function(){
     let pack = [];
     for(let i in PLAYERLIST){
         let player = PLAYERLIST[i];
-        player.x = playerPos.getPlayerX();
-        player.y = playerPos.getPlayerY();
+        //player.x = $playerSprite.style.left;
+       // player.y = $playerSprite.style.top;
     
         pack.push({
-           x:player.x,
-           y:player.y,
+           //x:player.x,
+          // y:player.y,
            number:player.number
         });
     }
 
     for(let i in SOCKETLIST){
         let socket = SOCKETLIST[i];
-        socket.emit("newPositions", pack);
+        //socket.emit("newPositions", pack);
+        socket.emit("players", pack);
     };
 
 },1000/30);
