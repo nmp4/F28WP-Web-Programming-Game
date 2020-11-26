@@ -16,7 +16,7 @@ const port = process.env.PORT || 80; //server port
 let SOCKETLIST = {};//list of socket connection
 let PLAYERLIST = {};//list of player connections
 
-app.get("/", function(req, res) {//communicates to server the game.html file to display
+app.get("/", function(req, res) {     //communicates to server the game.html file to display
     	res.sendFile(__dirname + "/Client/game.html");
 });
 
@@ -60,7 +60,9 @@ let Player = function(id){//function of player object with different id and numb
             coord = parseInt(playerInst.y) + playerInst.moveBy;
             playerInst.y = coord + "px";
         }
-    }*/
+    }
+    */
+
     return playerInst;
 }
 
@@ -71,7 +73,7 @@ io.on("connection", function(socket){ //checks for player connections to the ser
     socket.id = Math.random(); //the specific socket id of the person connected
     console.log("A player has connected.");
 
-    let player = Player(socket.id) //player object
+    let player = Player(socket.id); //player object
     SOCKETLIST[socket.id] = socket; //The array of sockets
     PLAYERLIST[socket.id] = player; // the array of players and their properties
 
