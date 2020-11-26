@@ -1,3 +1,8 @@
+/*
+        Author 1 : Joseph Parkinson  H00215751
+        Author 2 : Ethan Mcdade  ID H00318330
+        Author 3 : Kayla Pineda  ID: H00295669
+*/
 const $startButton = document.getElementById("startButton"); // DOM call for startbutton object
 const $background = document.getElementById('background'); // DOM call for background object
 const $playerNameInput = document.getElementById('playerNameInput');

@@ -1,3 +1,12 @@
+/*
+    author 1: Natasha Muthoni Pregetter  ID: H00326153
+    author 2: Suleyman Moustafa          ID: H00326579
+
+    Natasha implemented sockets and sactual server connection
+    Suleyman attempted the player movement and multiplayer positions
+    This was done through live coding so Natasha commited everything since it was on her PC.
+*/
+
 const express = require("express");
 // call in express functionality
 const app = express();
@@ -12,6 +21,7 @@ let SOCKETLIST = {};
 let PLAYERLIST = {};
 //list of player connections
 
+//Suleyman from line 25-34
 
 //const playerPos = require("./Client/js/game.js");
 
@@ -45,6 +55,7 @@ let Player = function(id){
         id:id,
         number: Math.floor(Math.random() * 10000)
 
+        //Suleyman
         /*pressingRight: false,
         pressingLeft: false,
         pressingUp: false,
@@ -85,6 +96,8 @@ io.on("connection", function(socket){
     });
 });
 
+
+//Suleyman from line 106-152
 /*
 **This was going to be player movement etc but game was done b4 server so all the calculations didnt work
 **due to the DOM objects and the inability of node to interact with the document object.
