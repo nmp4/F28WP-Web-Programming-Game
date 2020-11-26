@@ -1,3 +1,4 @@
+
 const $startButton = document.getElementById("startButton"); // DOM call for startbutton object
 const $background = document.getElementById('background'); // DOM call for background object
 const $playerNameInput = document.getElementById('playerNameInput');
@@ -438,4 +439,16 @@ function getRandomX(){ //function to get x value
 function getRandomY() { //function to get y value
     var coordY =  getRandomInt(841) + 100; //generate value within top and bottom borders
     return coordY;
-    }
+}
+
+
+function getPlayerX(){
+    return  $playerSprite.style.left;
+}   
+
+function getPlayerY(){
+    return $playerSprite.style.top;
+}
+
+
+module.exports = {getPlayerX, getPlayerY};
