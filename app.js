@@ -130,13 +130,13 @@ io.on("connection", function(socket){
     for(let i in PLAYERLIST){
         let player = PLAYERLIST[i];
         //For every player inside PLAYERLIST
-        //player.x = $playerSprite.style.left;
-       // player.y = $playerSprite.style.top;
+        //player.x = $playerSprite.style.left;   Suleyman
+       // player.y = $playerSprite.style.top;       Suleyman
     
         pack.push({
             //push the player info into the pack
-           //x:player.x,
-          // y:player.y,
+           //x:player.x,    Suleyman
+          // y:player.y,    Suleyman
            number:player.number
         });
     }
@@ -144,7 +144,7 @@ io.on("connection", function(socket){
     for(let i in SOCKETLIST){
         let socket = SOCKETLIST[i]; 
         //for every socket connection in the server
-        //socket.emit("newPositions", pack);    would have emitted player positions
+        //socket.emit("newPositions", pack);    would have emitted player positions Suleyman
         socket.emit("players", pack); 
         //emit the player info from the pack.
     };
