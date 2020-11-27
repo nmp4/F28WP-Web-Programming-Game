@@ -97,7 +97,7 @@ io.on("connection", function(socket){
 });
 
 
-//Suleyman from line 106-152
+//Suleyman from line 106-123
 /*
 **This was going to be player movement etc but game was done b4 server so all the calculations didnt work
 **due to the DOM objects and the inability of node to interact with the document object.
